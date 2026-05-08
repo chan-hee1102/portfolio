@@ -1,0 +1,57 @@
+import SectionWrapper from "@/components/ui/SectionWrapper";
+
+const philosophies = [
+  {
+    title: "데이터를 먼저 이해한다",
+    desc: "통계학·빅데이터 전공으로 데이터 구조와 흐름을 먼저 이해하고 설계합니다. AI가 코드를 작성하더라도, 어떤 데이터를 어떻게 다뤄야 하는지는 사람이 알아야 한다고 생각합니다.",
+  },
+  {
+    title: "프론트부터 배포까지 직접 완성한다",
+    desc: "UI 설계, API 연동, DB 구조, 배포까지 모든 레이어를 한 번씩 직접 완성해봤습니다. 이 경험이 있어야 AI와 협업해도 실제로 동작하는 서비스를 빠르게 만들 수 있다고 믿습니다.",
+  },
+  {
+    title: "AI는 도구가 아닌 협업 파트너다",
+    desc: "Claude Code를 단순한 코드 생성기가 아니라 함께 설계하고 디버깅하는 파트너로 씁니다. 제가 방향과 맥락을 잡고, AI가 구현을 채우는 방식으로 빠르게 완성도 높은 서비스를 만듭니다.",
+  },
+];
+
+export default function Philosophy() {
+  return (
+    <SectionWrapper id="philosophy" className="py-24 px-4 bg-white">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-6">
+          <span className="inline-block mb-3 px-3 py-1 text-xs font-bold tracking-widest text-indigo-600 bg-indigo-50 rounded-full uppercase">
+            Why I Vibe Code
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+            개발 철학
+          </h2>
+        </div>
+
+        <p className="text-center text-gray-500 max-w-2xl mx-auto mb-14 leading-relaxed">
+          AI로 누구나 웹을 만들 수 있는 시대지만, 데이터 구조·프론트/백엔드
+          이해·배포 경험을 한 번이라도 완전히 완성해본 사람만이 제대로
+          동작하는 서비스를 빠르게 만들 수 있다고 생각합니다.
+          <strong className="text-gray-900"> 저는 그 기반을 직접 쌓아왔습니다.</strong>
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {philosophies.map((item, i) => (
+            <div
+              key={i}
+              className="relative rounded-2xl border border-gray-200 bg-white p-6 hover:border-indigo-200 hover:shadow-md transition-all"
+            >
+              <div className="w-8 h-8 rounded-full bg-indigo-600 text-white text-sm font-extrabold flex items-center justify-center mb-4">
+                {i + 1}
+              </div>
+              <h3 className="text-base font-bold text-gray-900 mb-3">
+                {item.title}
+              </h3>
+              <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </SectionWrapper>
+  );
+}

@@ -7,6 +7,7 @@ const navLinks = [
   { label: "프로젝트", href: "#projects" },
   { label: "기술", href: "#skills" },
   { label: "경력", href: "#experience" },
+  { label: "철학", href: "#philosophy" },
   { label: "연락처", href: "#contact" },
 ];
 

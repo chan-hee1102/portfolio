@@ -20,7 +20,7 @@ export default function Hero() {
             transition={{ delay: 0.1, duration: 0.5 }}
             className="inline-block mb-5 px-4 py-1.5 text-xs font-bold tracking-widest text-indigo-600 bg-indigo-50 border border-indigo-100 rounded-full uppercase"
           >
-            Fullstack Developer
+            Vibe Coder · Fullstack Developer
           </motion.span>
 
           <h1 className="text-6xl sm:text-8xl font-extrabold text-gray-900 tracking-tighter mb-6 leading-none">
@@ -28,10 +28,9 @@ export default function Hero() {
           </h1>
 
           <p className="text-lg sm:text-xl text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Next.js & FastAPI로 실제 서비스를 만드는 풀스택 개발자입니다.
+            데이터를 이해하고, AI로 만들고, 직접 배포하는
             <br className="hidden sm:block" />
-            AI 연동 SaaS 제품 개발과 엔터프라이즈 내부 포털 구축 경험을
-            보유하고 있습니다.
+            풀스택 바이브 코더입니다.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

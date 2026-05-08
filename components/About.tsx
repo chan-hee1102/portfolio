@@ -56,22 +56,26 @@ export default function About() {
 
           {/* 자기소개 + 기술스택 */}
           <div className="lg:col-span-2 space-y-8">
-            <div>
-              <p className="text-gray-700 leading-relaxed text-lg mb-5">
-                안녕하세요, 저는 실제로 쓰이는 제품을 만드는 것을 좋아하는
-                풀스택 개발자{" "}
-                <strong className="text-gray-900 font-bold">임찬희</strong>
-                입니다.
-              </p>
-              <p className="text-gray-600 leading-relaxed mb-5">
-                AI 스타트업 에이드온에서 Next.js와 FastAPI를 기반으로 서비스를
-                개발하고 있으며, 한국 주식 테마 분석 SaaS(KOSTOCK Pro)를 솔로
-                개발한 경험이 있습니다. KB국민은행의 IT 자산관리 내부 포털도
-                직접 기획 및 구축했습니다.
+            <div className="space-y-4">
+              <p className="text-gray-700 leading-relaxed text-lg">
+                통계학·빅데이터 전공으로 데이터 분석을 시작했고, 분석 결과를
+                실생활에 직접 쓰고 싶어 주식 데이터 자동화 웹을{" "}
+                <strong className="text-gray-900">독학으로 만들면서</strong>{" "}
+                개발에 입문했습니다.
               </p>
               <p className="text-gray-600 leading-relaxed">
-                복잡한 문제를 명료하게 해결하고, 사용자에게 실질적인 가치를
-                전달하는 제품을 만드는 데 보람을 느낍니다.
+                GPT 등장 이후 LLM을 직접 붙여보고 프롬프트 엔지니어링을
+                반복하며 AI 활용 개발에 깊이 빠졌고,{" "}
+                <strong className="text-gray-900">Claude Code</strong>를
+                도입하면서 완성도 높은 풀스택 서비스를 빠르게 만들 수 있게
+                됐습니다.
+              </p>
+              <p className="text-gray-600 leading-relaxed">
+                현재는 AI 스타트업{" "}
+                <strong className="text-gray-900">에이드온</strong>에서 실무
+                개발을 하며, 개인 SaaS 서비스{" "}
+                <strong className="text-gray-900">KOSTOCK Pro</strong>를
+                코스콤과 정식 계약 후 2026년 6월 출시를 준비 중입니다.
               </p>
             </div>
 
