@@ -71,20 +71,26 @@ const projects: Project[] = [
 ];
 
 const statusStyle: Record<Project["status"], string> = {
-  "출시 예정": "bg-amber-50 text-amber-700",
-  "운영 중": "bg-emerald-50 text-emerald-700",
-  "완료": "bg-gray-100 text-gray-500",
-  "개발 완료": "bg-blue-50 text-blue-700",
+  "출시 예정": "text-amber-700 bg-amber-50 border border-amber-200",
+  "운영 중": "text-emerald-700 bg-emerald-50 border border-emerald-200",
+  "완료": "text-pewter bg-whisper-cloud border border-slate-border",
+  "개발 완료": "text-electric-blue bg-whisper-cloud border border-active-lavender",
 };
 
 export default function Projects() {
   const [expanded, setExpanded] = useState<string | null>(null);
 
   return (
-    <SectionWrapper id="projects" className="py-24 px-4 bg-slate-50">
+    <SectionWrapper id="projects" className="py-24 px-4 bg-surface-frost">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-14">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+          <p className="text-xs font-semibold tracking-widest text-purple-heart uppercase mb-3">
+            Projects
+          </p>
+          <h2
+            className="font-display font-bold text-charcoal-black"
+            style={{ fontSize: "32px", letterSpacing: "-0.004em", lineHeight: 1.12 }}
+          >
             프로젝트
           </h2>
         </div>
@@ -93,42 +99,57 @@ export default function Projects() {
           {projects.map((project) => (
             <div
               key={project.id}
-              className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col"
+              className="bg-surface-frost border border-slate-border flex flex-col overflow-hidden transition-all hover:border-active-lavender"
+              style={{
+                borderRadius: "16px",
+                boxShadow: "rgba(0, 0, 0, 0.1) 0px 0px 32px 0px",
+              }}
             >
-              <div className="p-6 flex flex-col flex-1">
+              <div className="p-4 flex flex-col flex-1">
                 <div className="mb-3">
                   <div className="flex items-start justify-between gap-2 mb-2">
-                    <span className="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full">
+                    <span
+                      className="text-xs font-semibold text-purple-heart bg-whisper-cloud px-2.5 py-1"
+                      style={{ borderRadius: "90px" }}
+                    >
                       {project.type}
                     </span>
                     <span
-                      className={`flex-shrink-0 text-xs font-semibold px-2.5 py-1 rounded-full ${statusStyle[project.status]}`}
+                      className={`flex-shrink-0 text-xs font-semibold px-2.5 py-1 ${statusStyle[project.status]}`}
+                      style={{ borderRadius: "90px" }}
                     >
                       {project.status}
                     </span>
                   </div>
                   {project.badge && (
                     <div className="mb-2">
-                      <span className="inline-flex items-center gap-1 text-xs font-semibold text-rose-600 bg-rose-50 border border-rose-100 px-2.5 py-1 rounded-full">
-                        <span className="h-1.5 w-1.5 rounded-full bg-rose-500 animate-pulse" />
+                      <span
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-dark-violet bg-whisper-cloud border border-pale-orchid px-2.5 py-1"
+                        style={{ borderRadius: "90px" }}
+                      >
+                        <span className="h-1.5 w-1.5 rounded-full bg-vivid-amethyst animate-pulse" />
                         {project.badge}
                       </span>
                     </div>
                   )}
-                  <h3 className="text-lg font-bold text-gray-900">
+                  <h3
+                    className="font-display font-semibold text-charcoal-black mt-1"
+                    style={{ fontSize: "18px" }}
+                  >
                     {project.name}
                   </h3>
                 </div>
 
-                <p className="text-gray-500 text-sm mb-4 flex-1">
+                <p className="text-pewter text-sm mb-4 flex-1 leading-relaxed">
                   {project.shortDesc}
                 </p>
 
-                <div className="flex flex-wrap gap-1.5 mb-5">
+                <div className="flex flex-wrap gap-1.5 mb-4">
                   {project.stack.map((tech) => (
                     <span
                       key={tech}
-                      className="text-xs font-medium text-gray-600 bg-gray-100 px-2.5 py-1 rounded-md"
+                      className="text-xs font-medium text-cement-gray bg-canvas-ice border border-slate-border px-2.5 py-1"
+                      style={{ borderRadius: "4px" }}
                     >
                       {tech}
                     </span>
@@ -136,10 +157,8 @@ export default function Projects() {
                 </div>
 
                 <button
-                  onClick={() =>
-                    setExpanded(expanded === project.id ? null : project.id)
-                  }
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-600 hover:text-indigo-700 transition-colors mt-auto"
+                  onClick={() => setExpanded(expanded === project.id ? null : project.id)}
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-electric-blue hover:text-dark-violet transition-colors mt-auto"
                 >
                   자세히 보기
                   <motion.svg
@@ -150,12 +169,7 @@ export default function Projects() {
                     animate={{ rotate: expanded === project.id ? 180 : 0 }}
                     transition={{ duration: 0.25 }}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </motion.svg>
                 </button>
 
@@ -169,31 +183,23 @@ export default function Projects() {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="pt-5 mt-5 border-t border-gray-100">
-                        <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      <div className="pt-4 mt-4 border-t border-slate-border">
+                        <p className="text-pewter text-sm leading-relaxed mb-4">
                           {project.longDesc}
                         </p>
-                        <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">
+                        <p className="text-xs font-semibold tracking-widest text-pewter uppercase mb-3">
                           주요 기능
-                        </h4>
+                        </p>
                         <ul className="space-y-2">
                           {project.features.map((f) => (
-                            <li
-                              key={f}
-                              className="flex items-start gap-2 text-sm text-gray-600"
-                            >
+                            <li key={f} className="flex items-start gap-2 text-sm text-carbon-gray">
                               <svg
-                                className="h-4 w-4 mt-0.5 text-indigo-500 flex-shrink-0"
+                                className="h-4 w-4 mt-0.5 text-purple-heart flex-shrink-0"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
                               >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M5 13l4 4L19 7"
-                                />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                               </svg>
                               {f}
                             </li>

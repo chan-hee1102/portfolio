@@ -3,54 +3,62 @@ import SectionWrapper from "@/components/ui/SectionWrapper";
 const categories = [
   {
     title: "Frontend",
-    color: "text-violet-600 bg-violet-50",
+    accent: "text-dark-violet bg-whisper-cloud border-active-lavender",
     skills: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],
   },
   {
     title: "Backend",
-    color: "text-blue-600 bg-blue-50",
+    accent: "text-electric-blue bg-whisper-cloud border-active-lavender",
     skills: ["FastAPI", "Python", "PostgreSQL", "REST API", "SQLAlchemy"],
   },
   {
     title: "AI & Data",
-    color: "text-emerald-600 bg-emerald-50",
-    skills: ["Claude API", "Anthropic SDK", "Pandas", "Supabase", "SSE"],
+    accent: "text-purple-heart bg-whisper-cloud border-active-lavender",
+    skills: ["Claude API", "Claude Code", "Pandas", "Supabase", "SSE"],
   },
   {
     title: "Infra",
-    color: "text-orange-600 bg-orange-50",
+    accent: "text-carbon-gray bg-whisper-cloud border-active-lavender",
     skills: ["Docker", "Railway", "Cloudflare Tunnel", "Git", "Linux"],
   },
 ];
 
 export default function Skills() {
   return (
-    <SectionWrapper id="skills" className="py-24 px-4 bg-white">
+    <SectionWrapper id="skills" className="py-24 px-4 bg-canvas-ice">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-14">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+          <p className="text-xs font-semibold tracking-widest text-purple-heart uppercase mb-3">
+            Tech Stack
+          </p>
+          <h2
+            className="font-display font-bold text-charcoal-black"
+            style={{ fontSize: "32px", letterSpacing: "-0.004em", lineHeight: 1.12 }}
+          >
             기술 스택
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {categories.map((cat) => (
             <div
               key={cat.title}
-              className="rounded-2xl border border-gray-200 bg-white p-6 hover:border-indigo-200 hover:shadow-md transition-all group"
+              className="bg-surface-frost border border-slate-border p-4 transition-all hover:border-active-lavender"
+              style={{
+                borderRadius: "16px",
+                boxShadow: "rgba(0, 0, 0, 0.1) 0px 5px 20px 0px",
+              }}
             >
-              <h3
-                className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-5 ${cat.color}`}
+              <span
+                className={`inline-block text-xs font-bold tracking-widest uppercase px-3 py-1 mb-5 border ${cat.accent}`}
+                style={{ borderRadius: "90px" }}
               >
                 {cat.title}
-              </h3>
-              <div className="flex flex-col gap-2">
+              </span>
+              <div className="flex flex-col gap-2.5">
                 {cat.skills.map((skill) => (
-                  <div
-                    key={skill}
-                    className="flex items-center gap-2.5 text-sm text-gray-700"
-                  >
-                    <span className="h-1.5 w-1.5 rounded-full bg-indigo-400 flex-shrink-0" />
+                  <div key={skill} className="flex items-center gap-2.5 text-sm text-carbon-gray">
+                    <span className="h-1 w-1 rounded-full bg-orchid-glow flex-shrink-0" />
                     {skill}
                   </div>
                 ))}

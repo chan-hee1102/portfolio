@@ -1,10 +1,54 @@
 @import "tailwindcss";
 
+@theme {
+  /* ── Slack Color Tokens ── */
+  --color-canvas-ice: #fefbff;
+  --color-surface-frost: #ffffff;
+  --color-whisper-cloud: #f9f0ff;
+  --color-active-lavender: #f2defe;
+  --color-charcoal-black: #000000;
+  --color-carbon-gray: #1d1c1d;
+  --color-pewter: #696969;
+  --color-cement-gray: #757575;
+  --color-slate-border: #edeaed;
+  --color-dark-plum: #481a54;
+  --color-purple-heart: #611f69;
+  --color-dark-violet: #730394;
+  --color-deep-aubergine: #3d0157;
+  --color-grape-jelly: #2e0039;
+  --color-electric-blue: #1264a3;
+  --color-orchid-glow: #d17dfe;
+  --color-vivid-amethyst: #9602c7;
+  --color-pale-orchid: #eac8fe;
+
+  /* ── Fonts ── */
+  --font-display: var(--font-montserrat), Montserrat, Georgia, sans-serif;
+  --font-sans: var(--font-inter), 'Open Sans', Arial, sans-serif;
+
+  /* ── Shadows ── */
+  --shadow-card: rgba(0, 0, 0, 0.1) 0px 0px 32px 0px;
+  --shadow-lg: rgba(0, 0, 0, 0.1) 0px 5px 20px 0px;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: #ffffff;
-  color: #111827;
+  background-color: #fefbff;
+  color: #000000;
+  font-family: var(--font-sans);
+}
+
+/* Magic Dust + Rainbow gradient for Hero/Contact */
+.bg-magic-dust {
+  background: linear-gradient(104deg, rgb(0, 0, 0) 9.56%, rgb(186, 1, 255) 102.66%);
+}
+
+.rainbow-washes {
+  background-image:
+    radial-gradient(20vw at 10% 70%, rgba(255, 100, 150, 0.2), transparent),
+    radial-gradient(20vw at 30% 70%, rgba(100, 150, 255, 0.2), transparent),
+    radial-gradient(20vw at 65% 70%, rgba(100, 255, 150, 0.15), transparent),
+    radial-gradient(20vw at 90% 70%, rgba(255, 255, 100, 0.15), transparent);
 }

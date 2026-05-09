@@ -17,37 +17,60 @@ const philosophies = [
 
 export default function Philosophy() {
   return (
-    <SectionWrapper id="philosophy" className="py-24 px-4 bg-white">
+    <SectionWrapper id="philosophy" className="py-24 px-4 bg-canvas-ice">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-6">
-          <span className="inline-block mb-3 px-3 py-1 text-xs font-bold tracking-widest text-indigo-600 bg-indigo-50 rounded-full uppercase">
+          <p className="text-xs font-semibold tracking-widest text-purple-heart uppercase mb-3">
             Why I Vibe Code
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+          </p>
+          <h2
+            className="font-display font-bold text-charcoal-black"
+            style={{ fontSize: "32px", letterSpacing: "-0.004em", lineHeight: 1.12 }}
+          >
             개발 철학
           </h2>
         </div>
 
-        <p className="text-center text-gray-500 max-w-2xl mx-auto mb-14 leading-relaxed">
-          AI로 누구나 웹을 만들 수 있는 시대지만, 데이터 구조·프론트/백엔드
-          이해·배포 경험을 한 번이라도 완전히 완성해본 사람만이 제대로
-          동작하는 서비스를 빠르게 만들 수 있다고 생각합니다.
-          <strong className="text-gray-900"> 저는 그 기반을 직접 쌓아왔습니다.</strong>
-        </p>
+        {/* Key statement — Purple Aura gradient block */}
+        <div
+          className="mx-auto max-w-2xl text-center mb-14 px-8 py-6"
+          style={{
+            background: "linear-gradient(102deg, rgba(131, 56, 138, 0.08) 0%, rgba(211, 137, 231, 0.08) 100%)",
+            borderRadius: "16px",
+            border: "1px solid #f2defe",
+          }}
+        >
+          <p className="text-carbon-gray leading-relaxed" style={{ fontSize: "16px" }}>
+            AI로 누구나 웹을 만들 수 있는 시대지만, 데이터 구조·프론트/백엔드
+            이해·배포 경험을 한 번이라도 완전히 완성해본 사람만이 제대로
+            동작하는 서비스를 빠르게 만들 수 있다고 생각합니다.{" "}
+            <strong className="text-purple-heart">저는 그 기반을 직접 쌓아왔습니다.</strong>
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {philosophies.map((item, i) => (
             <div
               key={i}
-              className="relative rounded-2xl border border-gray-200 bg-white p-6 hover:border-indigo-200 hover:shadow-md transition-all"
+              className="bg-surface-frost border border-slate-border p-6 transition-all hover:border-active-lavender"
+              style={{
+                borderRadius: "16px",
+                boxShadow: "rgba(0, 0, 0, 0.1) 0px 5px 20px 0px",
+              }}
             >
-              <div className="w-8 h-8 rounded-full bg-indigo-600 text-white text-sm font-extrabold flex items-center justify-center mb-4">
+              <div
+                className="w-8 h-8 text-white text-sm font-bold flex items-center justify-center mb-4 bg-purple-heart"
+                style={{ borderRadius: "4px" }}
+              >
                 {i + 1}
               </div>
-              <h3 className="text-base font-bold text-gray-900 mb-3">
+              <h3
+                className="font-display font-semibold text-charcoal-black mb-3"
+                style={{ fontSize: "16px" }}
+              >
                 {item.title}
               </h3>
-              <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+              <p className="text-sm text-pewter leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>

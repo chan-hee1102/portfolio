@@ -45,100 +45,86 @@ const experiences = [
 
 function WorkIcon() {
   return (
-    <svg
-      className="h-5 w-5"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-      />
+    <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+        d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
     </svg>
   );
 }
 
 function EducationIcon() {
   return (
-    <svg
-      className="h-5 w-5"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M12 14l9-5-9-5-9 5 9 5z"
-      />
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
-      />
+    <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+        d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
     </svg>
   );
 }
 
 export default function Experience() {
   return (
-    <SectionWrapper id="experience" className="py-24 px-4 bg-slate-50">
+    <SectionWrapper id="experience" className="py-24 px-4 bg-surface-frost">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-14">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+          <p className="text-xs font-semibold tracking-widest text-purple-heart uppercase mb-3">
+            Experience
+          </p>
+          <h2
+            className="font-display font-bold text-charcoal-black"
+            style={{ fontSize: "32px", letterSpacing: "-0.004em", lineHeight: 1.12 }}
+          >
             경력 & 교육
           </h2>
         </div>
 
         <div className="relative">
-          <div className="absolute left-6 top-0 bottom-0 w-px bg-gray-200 hidden sm:block" />
+          <div className="absolute left-6 top-0 bottom-0 w-px bg-slate-border hidden sm:block" />
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {experiences.map((exp, i) => (
               <div key={i} className="flex gap-6">
                 <div className="relative hidden sm:flex items-start justify-center flex-shrink-0 w-12 pt-1">
                   <div
-                    className={`w-12 h-12 rounded-full flex items-center justify-center z-10 ${
+                    className={`w-12 h-12 flex items-center justify-center z-10 ${
                       exp.type === "work"
-                        ? "bg-indigo-600 text-white"
-                        : "bg-white border-2 border-indigo-500 text-indigo-600"
+                        ? "bg-purple-heart text-white"
+                        : "bg-surface-frost border-2 border-purple-heart text-purple-heart"
                     }`}
+                    style={{ borderRadius: "90px" }}
                   >
                     {exp.type === "work" ? <WorkIcon /> : <EducationIcon />}
                   </div>
                 </div>
 
-                <div className="flex-1 bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
+                <div
+                  className="flex-1 bg-canvas-ice border border-slate-border p-6 transition-all hover:border-active-lavender"
+                  style={{ borderRadius: "16px" }}
+                >
                   <div className="flex flex-wrap items-start justify-between gap-2 mb-4">
                     <div>
-                      <h3 className="text-lg font-bold text-gray-900">
+                      <h3
+                        className="font-display font-semibold text-charcoal-black"
+                        style={{ fontSize: "18px" }}
+                      >
                         {exp.role}
                       </h3>
-                      <p className="text-sm font-semibold text-indigo-600 mt-0.5">
+                      <p className="text-sm font-semibold text-purple-heart mt-0.5">
                         {exp.org}
-                        <span className="text-gray-400 font-normal ml-2">
-                          {exp.orgDesc}
-                        </span>
+                        <span className="text-pewter font-normal ml-2">{exp.orgDesc}</span>
                       </p>
                     </div>
-                    <span className="text-xs font-semibold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-full whitespace-nowrap">
+                    <span
+                      className="text-xs font-semibold text-pewter bg-whisper-cloud border border-slate-border px-3 py-1.5 whitespace-nowrap"
+                      style={{ borderRadius: "90px" }}
+                    >
                       {exp.period}
                     </span>
                   </div>
                   <ul className="space-y-2">
                     {exp.description.map((d, j) => (
-                      <li
-                        key={j}
-                        className="flex items-start gap-2.5 text-sm text-gray-600"
-                      >
-                        <span className="text-indigo-400 font-bold mt-0.5 flex-shrink-0">
-                          ·
-                        </span>
+                      <li key={j} className="flex items-start gap-2.5 text-sm text-pewter">
+                        <span className="text-orchid-glow font-bold mt-0.5 flex-shrink-0">·</span>
                         {d}
                       </li>
                     ))}
