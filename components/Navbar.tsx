@@ -6,7 +6,6 @@ const navLinks = [
   { label: "프로필", href: "#about" },
   { label: "프로젝트", href: "#projects" },
   { label: "자기소개서", href: "#experience" },
-  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -60,15 +59,9 @@ export default function Navbar() {
           {/* 로고 */}
           <a
             href="#"
-            className="flex items-center gap-2 pl-2 pr-4 text-sm font-bold text-gray-900 tracking-tight"
+            className="pl-3 pr-4 text-sm font-bold tracking-tight"
+            style={{ color: "#6366f1" }}
           >
-            <span
-              className="w-6 h-6 flex-shrink-0"
-              style={{
-                background: "linear-gradient(135deg, #818cf8, #6366f1)",
-                borderRadius: "9999px",
-              }}
-            />
             포트폴리오
           </a>
 
@@ -107,14 +100,7 @@ export default function Navbar() {
             boxShadow: "0 4px 24px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.06)",
           }}
         >
-          <a href="#" className="flex items-center gap-2 text-sm font-bold text-gray-900">
-            <span
-              className="w-5 h-5 flex-shrink-0"
-              style={{
-                background: "linear-gradient(135deg, #818cf8, #6366f1)",
-                borderRadius: "9999px",
-              }}
-            />
+          <a href="#" className="text-sm font-bold" style={{ color: "#6366f1" }}>
             포트폴리오
           </a>
 
