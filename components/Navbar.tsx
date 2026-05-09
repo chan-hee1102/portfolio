@@ -10,24 +10,20 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
   const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      const pastHero = window.scrollY > window.innerHeight * 0.8;
-
-      // Hero 안에 있으면 항상 숨김
-      if (!pastHero) {
-        setVisible(false);
-        if (hideTimer.current) clearTimeout(hideTimer.current);
-        return;
-      }
-
-      // Hero 지난 후: 스크롤 시작 → 표시
+      // 스크롤 시작 → 즉시 표시
       setVisible(true);
+
+      // 기존 타이머 취소
       if (hideTimer.current) clearTimeout(hideTimer.current);
+
+      // 최상단이면 타이머 없이 항상 표시
+      if (window.scrollY < 10) return;
 
       // 1.8초 후 멈춤 감지 → 숨김
       hideTimer.current = setTimeout(() => {
