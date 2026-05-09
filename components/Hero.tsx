@@ -1,161 +1,160 @@
 "use client";
 
-import { motion, type TargetAndTransition } from "framer-motion";
+import { motion } from "framer-motion";
 
-/* 애니메이션 오브 컴포넌트 */
-function Orb({
-  style,
-  animate,
-  duration,
-}: {
-  style: React.CSSProperties;
-  animate: TargetAndTransition;
-  duration: number;
-}) {
-  return (
-    <motion.div
-      className="absolute rounded-full pointer-events-none"
-      style={{ filter: "blur(80px)", ...style }}
-      animate={animate}
-      transition={{ duration, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
-    />
-  );
-}
-
-const containerVariants = {
-  animate: { transition: { staggerChildren: 0.12 } },
-};
-
-const itemVariants = {
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-};
-
-const itemTransition = { duration: 0.8, ease: "easeOut" as const };
+const fadeUp = (delay: number) => ({
+  initial: { opacity: 0, y: 20 } as const,
+  animate: { opacity: 1, y: 0 } as const,
+  transition: { duration: 1.2, delay, ease: "easeOut" as const },
+});
 
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6"
-      style={{ background: "#08011a" }}
+      className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden"
+      style={{ background: "#000000" }}
     >
-      {/* ── 배경 그라디언트 오브 ── */}
-      <Orb
-        style={{ width: 600, height: 600, top: "-10%", left: "15%", background: "rgba(99,66,213,0.35)" }}
-        animate={{ x: [0, 40, 0], y: [0, 30, 0] }}
-        duration={12}
-      />
-      <Orb
-        style={{ width: 500, height: 500, bottom: "-5%", right: "10%", background: "rgba(139,92,246,0.25)" }}
-        animate={{ x: [0, -50, 0], y: [0, -40, 0] }}
-        duration={15}
-      />
-      <Orb
-        style={{ width: 300, height: 300, top: "40%", left: "55%", background: "rgba(167,139,250,0.15)" }}
-        animate={{ x: [0, 30, -20, 0], y: [0, -30, 20, 0] }}
-        duration={18}
-      />
-
-      {/* ── 노이즈 오버레이 (고급감) ── */}
+      {/* 유기적 보라 그라디언트 (monopo 스타일) */}
       <div
+        aria-hidden
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-          opacity: 0.04,
-          mixBlendMode: "overlay",
+          background: [
+            "radial-gradient(ellipse 100% 80% at 15% 60%, rgba(76,29,149,0.75), transparent 60%)",
+            "radial-gradient(ellipse 70% 70% at 80% 30%, rgba(109,40,217,0.5), transparent 60%)",
+            "radial-gradient(ellipse 50% 50% at 50% 90%, rgba(139,92,246,0.35), transparent 60%)",
+          ].join(", "),
         }}
       />
 
-      {/* ── 중앙 콘텐츠 ── */}
-      <motion.div
-        className="relative z-10 flex flex-col items-center text-center w-full max-w-5xl"
-        variants={containerVariants}
-        initial="initial"
-        animate="animate"
-      >
-        {/* 상단 레이블 */}
-        <motion.div variants={itemVariants} transition={itemTransition} className="flex items-center gap-3 mb-10">
-          <div className="h-px w-12 bg-white/20" />
-          <span className="text-xs tracking-[0.25em] text-white/40 uppercase font-medium">
-            Portfolio · 2026
-          </span>
-          <div className="h-px w-12 bg-white/20" />
-        </motion.div>
+      {/* 노이즈 텍스처 */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
+          opacity: 0.045,
+          mixBlendMode: "screen",
+        }}
+      />
 
-        {/* 메인 이름 */}
+      {/* 상단 메타 */}
+      <div className="relative z-10 flex justify-between items-start px-8 sm:px-14 pt-28">
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.3 }}
+          className="text-xs tracking-[0.25em] uppercase"
+          style={{ color: "rgba(255,255,255,0.3)", fontWeight: 400 }}
+        >
+          Portfolio
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="text-xs tracking-[0.25em] uppercase"
+          style={{ color: "rgba(255,255,255,0.3)", fontWeight: 400 }}
+        >
+          2026
+        </motion.p>
+      </div>
+
+      {/* 중앙 메인 타이포 */}
+      <div className="relative z-10 flex flex-col items-center text-center px-6">
+
+        {/* 이름 — weight 300, monopo 스타일 */}
         <motion.h1
-          variants={itemVariants} transition={itemTransition}
-          className="font-extrabold text-white leading-none tracking-tighter mb-6 select-none"
-          style={{ fontSize: "clamp(72px, 14vw, 180px)", letterSpacing: "-0.03em" }}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.4, delay: 0.2, ease: "easeOut" }}
+          className="text-white select-none"
+          style={{
+            fontSize: "clamp(80px, 16vw, 220px)",
+            fontWeight: 300,
+            letterSpacing: "-0.02em",
+            lineHeight: 0.9,
+          }}
         >
           임찬희
         </motion.h1>
 
-        {/* 역할 태그라인 */}
-        <motion.p
-          variants={itemVariants} transition={itemTransition}
-          className="text-sm sm:text-base tracking-[0.2em] uppercase mb-12"
-          style={{ color: "rgba(167,139,250,0.7)" }}
+        {/* 구분선 + 역할 */}
+        <motion.div
+          {...fadeUp(0.7)}
+          className="flex items-center gap-6 mt-8"
         >
-          Vibe Coder&nbsp;&nbsp;·&nbsp;&nbsp;Fullstack Developer
-        </motion.p>
+          <div className="h-px w-10" style={{ background: "rgba(255,255,255,0.2)" }} />
+          <p
+            className="text-xs tracking-[0.22em] uppercase"
+            style={{ color: "rgba(255,255,255,0.4)", fontWeight: 400 }}
+          >
+            Fullstack Developer&nbsp;&nbsp;·&nbsp;&nbsp;Vibe Coder
+          </p>
+          <div className="h-px w-10" style={{ background: "rgba(255,255,255,0.2)" }} />
+        </motion.div>
 
-        {/* 한 줄 소개 */}
+        {/* 소개 */}
         <motion.p
-          variants={itemVariants} transition={itemTransition}
-          className="text-white/40 text-sm sm:text-base max-w-md leading-relaxed mb-12"
+          {...fadeUp(0.9)}
+          className="mt-6 max-w-xs text-sm leading-relaxed"
+          style={{ color: "rgba(255,255,255,0.25)", fontWeight: 300 }}
         >
           데이터를 이해하고, AI로 만들고, 직접 배포합니다.
         </motion.p>
 
-        {/* CTA 버튼 */}
-        <motion.div variants={itemVariants} transition={itemTransition} className="flex flex-col sm:flex-row gap-3">
+        {/* CTA */}
+        <motion.div {...fadeUp(1.1)} className="mt-10 flex gap-3">
           <a
             href="#projects"
-            className="inline-flex items-center justify-center px-8 py-3 text-sm font-semibold text-white transition-all hover:opacity-80 active:scale-95"
-            style={{ background: "rgba(99,66,213,0.9)", borderRadius: "6px" }}
+            className="px-7 py-2.5 text-sm text-white transition-all hover:opacity-60"
+            style={{
+              border: "1px solid rgba(255,255,255,0.25)",
+              borderRadius: "75px",
+              fontWeight: 400,
+            }}
           >
             프로젝트 보기
           </a>
           <a
             href="#about"
-            className="inline-flex items-center justify-center px-8 py-3 text-sm font-semibold transition-all hover:bg-white/10 active:scale-95"
-            style={{
-              color: "rgba(255,255,255,0.6)",
-              border: "1px solid rgba(255,255,255,0.15)",
-              borderRadius: "6px",
-            }}
+            className="px-7 py-2.5 text-sm transition-all hover:opacity-60"
+            style={{ color: "rgba(255,255,255,0.35)", fontWeight: 400 }}
           >
-            프로필 보기
+            프로필 →
           </a>
         </motion.div>
-      </motion.div>
+      </div>
 
-      {/* ── 스크롤 인디케이터 ── */}
-      <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.6, duration: 1 }}
-      >
-        <span className="text-[10px] tracking-[0.25em] uppercase" style={{ color: "rgba(255,255,255,0.25)" }}>
-          Scroll
-        </span>
+      {/* 하단 */}
+      <div className="relative z-10 flex justify-between items-end px-8 sm:px-14 pb-10">
         <motion.div
-          style={{ color: "rgba(255,255,255,0.25)" }}
-          animate={{ y: [0, 7, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          {...fadeUp(1.4)}
+          className="flex flex-col items-start gap-2"
         >
-          <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
-          </svg>
+          <div className="h-10 w-px" style={{ background: "rgba(255,255,255,0.15)" }} />
+          <span
+            className="text-xs tracking-[0.2em] uppercase"
+            style={{ color: "rgba(255,255,255,0.25)" }}
+          >
+            Scroll
+          </span>
         </motion.div>
-      </motion.div>
 
-      {/* ── 하단 그라디언트 페이드 (다음 섹션으로 자연스럽게) ── */}
+        <motion.p
+          {...fadeUp(1.4)}
+          className="text-xs"
+          style={{ color: "rgba(255,255,255,0.15)", fontWeight: 300 }}
+        >
+          Chan-Hee Lim
+        </motion.p>
+      </div>
+
+      {/* 다음 섹션 페이드 */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+        aria-hidden
+        className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
         style={{ background: "linear-gradient(to bottom, transparent, #ffffff)" }}
       />
     </section>
