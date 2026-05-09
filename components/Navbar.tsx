@@ -35,7 +35,7 @@ export default function Navbar() {
             href="#"
             className="text-xl font-extrabold text-indigo-600 tracking-tight"
           >
-            임찬희
+            포트폴리오
           </a>
 
           <div className="hidden md:flex items-center gap-8">

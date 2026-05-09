@@ -14,23 +14,21 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, ease: "easeOut" }}
         >
-          <motion.span
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.5 }}
-            className="inline-block mb-5 px-4 py-1.5 text-xs font-bold tracking-widest text-indigo-600 bg-indigo-50 border border-indigo-100 rounded-full uppercase"
+            className="text-sm font-semibold tracking-[0.2em] text-indigo-400 uppercase mb-4"
           >
-            Vibe Coder · Fullstack Developer
-          </motion.span>
+            Portfolio
+          </motion.p>
 
-          <h1 className="text-6xl sm:text-8xl font-extrabold text-gray-900 tracking-tighter mb-6 leading-none">
+          <h1 className="text-6xl sm:text-8xl font-extrabold text-gray-900 tracking-tighter mb-3 leading-none">
             임찬희
           </h1>
 
-          <p className="text-lg sm:text-xl text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-            데이터를 이해하고, AI로 만들고, 직접 배포하는
-            <br className="hidden sm:block" />
-            풀스택 바이브 코더입니다.
+          <p className="text-base sm:text-lg text-gray-400 tracking-widest uppercase mb-10">
+            Vibe Coder · Fullstack Developer
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
