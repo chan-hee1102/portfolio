@@ -12,23 +12,31 @@ const navLinks = [
 export default function Navbar() {
   const [visible, setVisible] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const lastScrollY = useRef(0);
+  const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentY = window.scrollY;
-      if (currentY < 10) {
-        setVisible(true);
-      } else if (currentY < lastScrollY.current) {
-        setVisible(true);
-      } else if (currentY > lastScrollY.current + 4) {
+      // 스크롤 시작 → 즉시 표시
+      setVisible(true);
+
+      // 기존 타이머 취소
+      if (hideTimer.current) clearTimeout(hideTimer.current);
+
+      // 최상단이면 타이머 없이 항상 표시
+      if (window.scrollY < 10) return;
+
+      // 1.8초 후 멈춤 감지 → 숨김
+      hideTimer.current = setTimeout(() => {
         setVisible(false);
         setMobileOpen(false);
-      }
-      lastScrollY.current = currentY;
+      }, 1800);
     };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (hideTimer.current) clearTimeout(hideTimer.current);
+    };
   }, []);
 
   return (
