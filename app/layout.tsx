@@ -1,19 +1,14 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-montserrat",
-  weight: ["400", "600", "700"],
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "임찬희 | 풀스택 바이브 코더 포트폴리오",
+  title: "임찬희 | 풀스택 개발자 포트폴리오",
   description:
-    "데이터를 이해하고, AI로 만들고, 직접 배포하는 풀스택 바이브 코더 임찬희의 포트폴리오입니다.",
+    "Next.js, React, TypeScript, FastAPI 기반 풀스택 개발자 임찬희의 포트폴리오입니다.",
 };
 
 export default function RootLayout({
@@ -23,9 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" className="scroll-smooth">
-      <body
-        className={`${inter.variable} ${montserrat.variable} bg-canvas-ice text-charcoal-black antialiased`}
-      >
+      <body className={`${inter.className} bg-white text-gray-900 antialiased`}>
         <Navbar />
         {children}
       </body>

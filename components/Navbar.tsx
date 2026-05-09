@@ -8,6 +8,7 @@ const navLinks = [
   { label: "기술", href: "#skills" },
   { label: "경력", href: "#experience" },
   { label: "철학", href: "#philosophy" },
+  { label: "연락처", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -15,7 +16,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60);
+    const handleScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -24,7 +25,7 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-surface-frost border-b border-slate-border shadow-sm"
+          ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100"
           : "bg-transparent"
       }`}
     >
@@ -32,71 +33,65 @@ export default function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <a
             href="#"
-            className={`text-xl font-bold font-display tracking-tight transition-colors ${
-              scrolled ? "text-dark-plum" : "text-white"
-            }`}
+            className="text-xl font-extrabold text-indigo-600 tracking-tight"
           >
             임찬희
           </a>
 
-          <div className="hidden md:flex items-center gap-7">
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-electric-blue ${
-                  scrolled ? "text-pewter" : "text-white/80"
-                }`}
+                className="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors"
               >
                 {link.label}
               </a>
             ))}
-            <a
-              href="#contact"
-              className="ml-2 px-5 py-2 text-sm font-semibold text-white bg-purple-heart rounded transition-all hover:opacity-90 active:scale-95"
-              style={{ borderRadius: "4px" }}
-            >
-              연락하기
-            </a>
           </div>
 
           <button
-            className={`md:hidden p-2 rounded transition-colors ${
-              scrolled ? "text-pewter" : "text-white"
-            }`}
+            className="md:hidden p-2 rounded-lg text-gray-500 hover:text-gray-700"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="메뉴 열기"
           >
-            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
               {mobileOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               )}
             </svg>
           </button>
         </div>
 
         {mobileOpen && (
-          <div className="md:hidden pb-4 border-t border-slate-border bg-surface-frost">
+          <div className="md:hidden pb-4 border-t border-gray-100 bg-white">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block py-3 px-2 text-sm font-medium text-pewter hover:text-electric-blue transition-colors"
+                className="block py-3 px-2 text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors"
               >
                 {link.label}
               </a>
             ))}
-            <a
-              href="#contact"
-              onClick={() => setMobileOpen(false)}
-              className="block mt-2 mx-2 py-2.5 text-center text-sm font-semibold text-white bg-purple-heart"
-              style={{ borderRadius: "4px" }}
-            >
-              연락하기
-            </a>
           </div>
         )}
       </div>
