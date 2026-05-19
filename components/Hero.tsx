@@ -1,14 +1,63 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+
+type VantaEffect = { destroy: () => void };
 
 export default function Hero() {
+  const vantaRef = useRef<HTMLDivElement>(null);
+  const effectRef = useRef<VantaEffect | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    (async () => {
+      const THREE_NS = await import("three");
+      // vanta 0.5.24 was built against three < r137 and reads `THREE.VertexColors`,
+      // which newer three removed in favor of `vertexColors: true`. Shim it.
+      const THREE = { ...THREE_NS, VertexColors: true } as typeof THREE_NS;
+      // @ts-expect-error vanta ships no types
+      const NET = (await import("vanta/dist/vanta.net.min")).default;
+      if (cancelled || !vantaRef.current || effectRef.current) return;
+      effectRef.current = NET({
+        el: vantaRef.current,
+        THREE,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200,
+        minWidth: 200,
+        scale: 1,
+        scaleMobile: 1,
+        color: 0x6366f1,
+        backgroundColor: 0xffffff,
+        points: 9,
+        maxDistance: 18,
+        spacing: 18,
+        showDots: true,
+      });
+    })();
+
+    return () => {
+      cancelled = true;
+      effectRef.current?.destroy();
+      effectRef.current = null;
+    };
+  }, []);
+
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-slate-50 to-indigo-50 px-4"
+      className="relative min-h-screen flex items-center justify-center bg-white px-4 overflow-hidden"
     >
-      <div className="max-w-5xl mx-auto text-center">
+      <div
+        ref={vantaRef}
+        className="absolute inset-0 z-0 opacity-60"
+        aria-hidden
+      />
+
+      <div className="relative z-10 max-w-5xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
@@ -49,7 +98,7 @@ export default function Hero() {
       </div>
 
       <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-gray-400"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5 text-gray-400"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 0.8 }}
