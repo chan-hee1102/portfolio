@@ -4,41 +4,49 @@ const experiences = [
   {
     type: "work" as const,
     period: "2026.04 — 현재",
-    role: "풀스택 개발자",
-    org: "에이드온 (Aidon)",
+    role: "AI Agent 개발자",
+    org: "에이드온 주식회사",
     orgDesc: "AI 스타트업",
     description: [
-      "KB국민은행 IT 자산관리 포털 개발 (Next.js + FastAPI + PostgreSQL)",
-      "에이드온 회사 홈페이지 직접 기획 및 제작",
-      "건설 AI 웹 서비스 개발 중 (현재 진행)",
+      "AI Agent 기반 서비스 개발 (진행 중)",
       "Claude API 연동 기능 설계 및 구현",
-      "Docker 기반 컨테이너 배포 환경 구성",
+      "프론트엔드부터 백엔드·배포까지 풀스택 담당",
     ],
   },
   {
     type: "work" as const,
-    period: "2024 — 2026",
-    role: "개인 개발 (사이드 프로젝트)",
+    period: "2025 — 2026",
+    role: "KOSTOCK 개발 및 계약 진행",
     org: "KOSTOCK Pro",
-    orgDesc: "솔로 창업",
+    orgDesc: "솔로 프로젝트 → 코스콤 정식 계약",
     description: [
-      "Claude Code 도입 후 풀스택 SaaS 서비스 독자 개발",
-      "코스콤 정식 계약 진행 중, 2026년 6월 출시 예정",
-      "Supabase DB 설계, Railway 24시간 배포 운영",
-      "KIS API·Claude API 연동, 구독제 결제 시스템 구축",
+      "한국 주식 테마 분석 SaaS 서비스 솔로 개발",
+      "코스콤(KOSCOM)과 정식 계약 진행 (2026년 6월 출시 예정)",
+      "사용자 입장에서 모바일·웹 양쪽이 모두 잘 동작하도록 설계",
+      "Supabase DB 설계, Railway 24시간 실시간 배포 운영",
+    ],
+  },
+  {
+    type: "military" as const,
+    period: "2020 — 2022",
+    role: "군 복무",
+    org: "대한민국 육군",
+    orgDesc: "병역",
+    description: [
+      "학업 중단 후 만기 전역",
+      "복학 후 빅데이터 전공 학업 및 개인 프로젝트 재개",
     ],
   },
   {
     type: "education" as const,
-    period: "2020 — 2024",
-    role: "통계학·빅데이터과학과 학사 졸업",
-    org: "고려대학교 세종캠퍼스",
-    orgDesc: "학사",
+    period: "2019 — 2025",
+    role: "빅데이터 전공 학사 졸업",
+    org: "고려대학교",
+    orgDesc: "학사 (군 복무 2020~2022 포함)",
     description: [
-      "통계이론·데이터 분석 전공, 빅데이터과학 복수전공",
-      "주식 데이터 분석 개인 프로젝트로 개발 독학 시작",
-      "GPT API 연동 Streamlit 자동화 웹 제작 (첫 번째 배포 경험)",
+      "빅데이터 전공 — 데이터베이스·통계·데이터 분석 기초 학습",
       "Python, SQL, 머신러닝 심화 학습",
+      "주식 데이터 자동화 개인 프로젝트로 개발 입문",
     ],
   },
 ];
@@ -85,6 +93,36 @@ function EducationIcon() {
   );
 }
 
+function MilitaryIcon() {
+  return (
+    <svg
+      className="h-5 w-5"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+      />
+    </svg>
+  );
+}
+
+const iconMap = {
+  work: { icon: <WorkIcon />, style: "bg-indigo-600 text-white" },
+  education: {
+    icon: <EducationIcon />,
+    style: "bg-white border-2 border-indigo-500 text-indigo-600",
+  },
+  military: {
+    icon: <MilitaryIcon />,
+    style: "bg-white border-2 border-gray-400 text-gray-500",
+  },
+};
+
 export default function Experience() {
   return (
     <SectionWrapper id="experience" className="py-24 px-4 bg-slate-50">
@@ -103,13 +141,9 @@ export default function Experience() {
               <div key={i} className="flex gap-6">
                 <div className="relative hidden sm:flex items-start justify-center flex-shrink-0 w-12 pt-1">
                   <div
-                    className={`w-12 h-12 rounded-full flex items-center justify-center z-10 ${
-                      exp.type === "work"
-                        ? "bg-indigo-600 text-white"
-                        : "bg-white border-2 border-indigo-500 text-indigo-600"
-                    }`}
+                    className={`w-12 h-12 rounded-full flex items-center justify-center z-10 ${iconMap[exp.type].style}`}
                   >
-                    {exp.type === "work" ? <WorkIcon /> : <EducationIcon />}
+                    {iconMap[exp.type].icon}
                   </div>
                 </div>
 

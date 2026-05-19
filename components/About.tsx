@@ -58,24 +58,24 @@ export default function About() {
           <div className="lg:col-span-2 space-y-8">
             <div className="space-y-4">
               <p className="text-gray-700 leading-relaxed text-lg">
-                통계학·빅데이터 전공으로 데이터 분석을 시작했고, 분석 결과를
-                실생활에 직접 쓰고 싶어 주식 데이터 자동화 웹을{" "}
-                <strong className="text-gray-900">독학으로 만들면서</strong>{" "}
-                개발에 입문했습니다.
+                고려대학교{" "}
+                <strong className="text-gray-900">빅데이터 전공</strong>으로
+                데이터베이스와 데이터 분석의 기본기를 다졌고, 분석 결과를
+                실생활에 직접 쓰고 싶어 주식 데이터 자동화 웹을 독학으로
+                만들며 개발에 입문했습니다.
               </p>
               <p className="text-gray-600 leading-relaxed">
-                GPT 등장 이후 LLM을 직접 붙여보고 프롬프트 엔지니어링을
-                반복하며 AI 활용 개발에 깊이 빠졌고,{" "}
-                <strong className="text-gray-900">Claude Code</strong>를
-                도입하면서 완성도 높은 풀스택 서비스를 빠르게 만들 수 있게
-                됐습니다.
+                이후{" "}
+                <strong className="text-gray-900">KOSTOCK</strong>을 솔로로
+                개발·운영하며 코스콤과 정식 계약을 진행했고, 사용자 입장에서
+                모바일·웹 모두 잘 동작하도록 끝까지 책임지는 경험을
+                쌓았습니다.
               </p>
               <p className="text-gray-600 leading-relaxed">
-                현재는 AI 스타트업{" "}
-                <strong className="text-gray-900">에이드온</strong>에서 실무
-                개발을 하며, 개인 SaaS 서비스{" "}
-                <strong className="text-gray-900">KOSTOCK Pro</strong>를
-                코스콤과 정식 계약 후 2026년 6월 출시를 준비 중입니다.
+                현재는{" "}
+                <strong className="text-gray-900">에이드온 주식회사</strong>에서
+                AI Agent 기반 서비스를 풀스택으로 개발하며, DB·백엔드부터
+                프론트·배포까지 한 사람이 책임지는 방식으로 일하고 있습니다.
               </p>
             </div>
 

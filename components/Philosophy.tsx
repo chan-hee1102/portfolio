@@ -2,16 +2,16 @@ import SectionWrapper from "@/components/ui/SectionWrapper";
 
 const philosophies = [
   {
-    title: "데이터를 먼저 이해한다",
-    desc: "통계학·빅데이터 전공으로 데이터 구조와 흐름을 먼저 이해하고 설계합니다. AI가 코드를 작성하더라도, 어떤 데이터를 어떻게 다뤄야 하는지는 사람이 알아야 한다고 생각합니다.",
+    title: "UI만 만드는 바이브 코더가 아닙니다",
+    desc: "AI로 화면만 빠르게 찍어내는 사람은 많습니다. 저는 화면 뒤에서 데이터가 어떻게 흐르고 쌓이는지부터 설계하고, 실제로 동작하는 서비스를 끝까지 완성하는 데 집중합니다.",
   },
   {
-    title: "프론트부터 배포까지 직접 완성한다",
-    desc: "UI 설계, API 연동, DB 구조, 배포까지 모든 레이어를 한 번씩 직접 완성해봤습니다. 이 경험이 있어야 AI와 협업해도 실제로 동작하는 서비스를 빠르게 만들 수 있다고 믿습니다.",
+    title: "데이터베이스부터 백엔드까지 직접 잡습니다",
+    desc: "빅데이터 전공 경험으로 DB 스키마와 데이터 흐름을 먼저 단단하게 설계합니다. 실제 운영·배포 경험으로 백엔드까지 안정적으로 동작하도록 만든 뒤, 그 위에 프론트를 올립니다.",
   },
   {
-    title: "AI는 도구가 아닌 협업 파트너다",
-    desc: "Claude Code를 단순한 코드 생성기가 아니라 함께 설계하고 디버깅하는 파트너로 씁니다. 제가 방향과 맥락을 잡고, AI가 구현을 채우는 방식으로 빠르게 완성도 높은 서비스를 만듭니다.",
+    title: "사용자가 어디서 보든 잘 동작해야 합니다",
+    desc: "KOSTOCK을 직접 운영하면서 배운 건, 결국 판단 기준은 사용자라는 점입니다. 모바일·웹 모두에서 자연스럽게 보이고, 손에 익도록 동작하는 서비스를 기본값으로 만듭니다.",
   },
 ];
 
@@ -21,7 +21,7 @@ export default function Philosophy() {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-6">
           <span className="inline-block mb-3 px-3 py-1 text-xs font-bold tracking-widest text-indigo-600 bg-indigo-50 rounded-full uppercase">
-            Why I Vibe Code
+            How I Build
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
             개발 철학
@@ -29,10 +29,10 @@ export default function Philosophy() {
         </div>
 
         <p className="text-center text-gray-500 max-w-2xl mx-auto mb-14 leading-relaxed">
-          AI로 누구나 웹을 만들 수 있는 시대지만, 데이터 구조·프론트/백엔드
-          이해·배포 경험을 한 번이라도 완전히 완성해본 사람만이 제대로
-          동작하는 서비스를 빠르게 만들 수 있다고 생각합니다.
-          <strong className="text-gray-900"> 저는 그 기반을 직접 쌓아왔습니다.</strong>
+          AI로 누구나 화면을 만들 수 있는 시대지만, 데이터 구조를 이해하고
+          백엔드를 끝까지 책임지며 사용자가 실제로 쓰는 환경까지 챙겨본
+          사람만이 제대로 동작하는 서비스를 만들 수 있다고 생각합니다.
+          <strong className="text-gray-900"> 저는 그 과정을 모두 직접 거쳐왔습니다.</strong>
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -28,7 +28,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-base sm:text-lg text-gray-400 tracking-widest uppercase mb-10">
-            Vibe Coder · Fullstack Developer
+            Data-Driven Fullstack Developer
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
