@@ -19,7 +19,7 @@ export default function About() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:items-center">
           {/* 사진 + 기본정보 */}
           <div className="flex flex-col items-center lg:items-start gap-6">
             <div className="relative w-44 h-52 rounded-2xl overflow-hidden border-4 border-white shadow-xl">

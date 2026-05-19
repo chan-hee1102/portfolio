@@ -76,8 +76,14 @@ export default function Hero() {
             임찬희
           </h1>
 
-          <p className="text-base sm:text-lg text-gray-400 tracking-widest uppercase mb-10">
-            Data-Driven Fullstack Developer
+          <p className="text-sm sm:text-base text-gray-400 tracking-[0.25em] uppercase mb-5">
+            AI Automation × Vibe Coding Fullstack
+          </p>
+
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-10">
+            반복적인 비효율을 AI 자동화 웹으로 직접 풀어내고,
+            <br className="hidden sm:inline" />
+            그 과정에서 빠진 바이브 코딩으로 풀스택을 직접 만듭니다.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

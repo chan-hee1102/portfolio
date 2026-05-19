@@ -28,6 +28,7 @@ interface Phase {
   id: string;
   period: string;
   title: string;
+  shortName: string;
   subtitle: string;
   description: string;
   highlights?: PhaseHighlight[];
@@ -39,6 +40,7 @@ const phases: Phase[] = [
     id: "phase-1-data",
     period: "2019 — 2024",
     title: "데이터 전공기",
+    shortName: "데이터 전공기",
     subtitle: "고려대학교 빅데이터 전공 — 데이터의 기반을 다진 시기",
     description:
       "빅데이터 전공으로 통계·머신러닝·데이터베이스를 학습하며, 데이터를 다루는 기본기를 쌓았던 시기입니다. 가설을 세우고 데이터로 검증하는 분석 워크플로우를 전공 프로젝트로 직접 경험했습니다.",
@@ -85,6 +87,7 @@ const phases: Phase[] = [
     id: "phase-2-self",
     period: "2024 — 2025",
     title: "개발 입문 with GPT",
+    shortName: "개발 입문기",
     subtitle: "빅데이터 전공이 AI를 페어로 삼아 실제 개발에 뛰어든 시기",
     description:
       "데이터 분석에 머무르지 않고, GPT를 페어 프로그래머 삼아 웹·자동화·AI 기능까지 직접 만들어낸 시기입니다. 전공의 분석력을 실제로 동작하는 서비스 코드로 옮겨놓기 시작한 첫 단계였습니다.",
@@ -138,6 +141,7 @@ const phases: Phase[] = [
     id: "phase-3-claude",
     period: "2025 — 2026",
     title: "개인 프로젝트 및 실제 배포",
+    shortName: "실제 배포",
     subtitle: "AI 페어 프로그래밍으로 완성하고 24시간 운영하는 풀스택 서비스",
     description:
       "AI 페어 프로그래밍을 본격적으로 도입해 DB·백엔드·프론트·배포까지 한 사람이 처음부터 끝까지 만들고 실제 운영까지 책임진 시기입니다. KOSTOCK Pro를 솔로로 개발·운영하며 실시간 데이터 처리와 사용자 UX를 직접 검증하고 있습니다.",
@@ -204,6 +208,7 @@ const phases: Phase[] = [
     id: "phase-4-aidon",
     period: "2026 — 현재",
     title: "주식회사 에이드온",
+    shortName: "AI Agent",
     subtitle: "AI Agent 시작 — 회사 제품으로 AI Agent 영역에 본격 진입",
     description:
       "주식회사 에이드온에 합류해 AI Agent 기반 서비스를 풀스택으로 개발하기 시작한 시기입니다. 개인 프로젝트에서 쌓은 데이터·풀스택 경험을 실제 회사 제품에 적용하며 AI Agent 영역으로 본격적으로 진입하고 있습니다.",
@@ -261,27 +266,50 @@ export default function Projects() {
             프로젝트 — 연도별 성장 과정
           </h2>
         </div>
-        <p className="text-center text-gray-500 max-w-2xl mx-auto mb-16 leading-relaxed">
+        <p className="text-center text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed">
           데이터 전공 → 독학으로 웹 개발 입문 → Claude Code로 풀스택 서비스
           완성까지, 각 시기마다 어떤 프로젝트로 성장해왔는지 정리했습니다.
         </p>
 
-        <div className="space-y-16">
+        <div className="mb-20 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+          {phases.map((p, idx) => (
+            <a
+              key={p.id}
+              href={`#${p.id}`}
+              className="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-white border border-gray-200 text-sm font-semibold text-gray-700 hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50/40 active:scale-95 transition-all"
+            >
+              <span className="text-xs font-bold tracking-wider text-indigo-400 tabular-nums">
+                {String(idx + 1).padStart(2, "0")}
+              </span>
+              <span>{p.shortName}</span>
+            </a>
+          ))}
+        </div>
+
+        <div className="space-y-24">
           {phases.map((phase, phaseIdx) => {
-            const header = (
-              <div>
-                <div className="flex items-baseline gap-4 mb-2">
-                  <span className="text-xs font-bold tracking-widest text-indigo-500 uppercase">
-                    Phase {phaseIdx + 1}
+            const phaseIntro = (
+              <div className="text-center mb-16">
+                <div className="inline-flex items-baseline gap-2.5 mb-5">
+                  <span className="text-xs font-bold tracking-[0.25em] text-indigo-500 uppercase">
+                    Phase
                   </span>
-                  <span className="text-xs font-semibold text-gray-400 bg-white border border-gray-200 px-2.5 py-1 rounded-full">
-                    {phase.period}
+                  <span className="text-2xl font-black text-indigo-600 tabular-nums leading-none">
+                    {String(phaseIdx + 1).padStart(2, "0")}
                   </span>
                 </div>
-                <h3 className="text-2xl font-extrabold text-gray-900 tracking-tight mb-1">
+                <div className="text-5xl sm:text-6xl font-black text-gray-900 tabular-nums tracking-tighter leading-none">
+                  {phase.period}
+                </div>
+              </div>
+            );
+
+            const header = (
+              <div>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mb-2">
                   {phase.title}
                 </h3>
-                <p className="text-sm font-semibold text-indigo-600 mb-3">
+                <p className="text-sm font-semibold text-indigo-600 mb-4">
                   {phase.subtitle}
                 </p>
                 <p className="text-gray-600 leading-relaxed">
@@ -541,12 +569,31 @@ export default function Projects() {
                 });
 
             return (
-              <div key={phase.id} className="relative">
+              <div
+                key={phase.id}
+                id={phase.id}
+                className="relative scroll-mt-24"
+              >
+                {phaseIdx > 0 && (
+                  <div
+                    className="mb-20 flex items-center justify-center gap-4"
+                    aria-hidden
+                  >
+                    <div className="h-px w-20 sm:w-32 bg-gradient-to-r from-transparent to-gray-200" />
+                    <span className="text-[10px] font-bold tracking-[0.5em] text-gray-300">
+                      ◆
+                    </span>
+                    <div className="h-px w-20 sm:w-32 bg-gradient-to-l from-transparent to-gray-200" />
+                  </div>
+                )}
+
+                {phaseIntro}
+
                 {phase.highlights ? (
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                     <div>
                       {header}
-                      <div className="mt-8 space-y-6">{cards}</div>
+                      <div className="mt-10 space-y-6">{cards}</div>
                     </div>
                     <div className="lg:pl-6 lg:border-l lg:border-gray-200">
                       {highlightsPanel}
@@ -554,7 +601,7 @@ export default function Projects() {
                   </div>
                 ) : (
                   <>
-                    <div className="mb-6">{header}</div>
+                    <div className="mb-8">{header}</div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                       {cards}
                     </div>
