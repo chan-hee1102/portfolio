@@ -1,18 +1,8 @@
 import Image from "next/image";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 
-const skills = [
-  "Next.js",
-  "React",
-  "TypeScript",
-  "FastAPI",
-  "PostgreSQL",
-  "Docker",
-  "Claude API",
-  "Python",
-];
-
 const info = [
+  { label: "이름", value: "임찬희" },
   { label: "생년월일", value: "1999.11.02 (만 26세)" },
   { label: "Phone", value: "010-4946-1195" },
   { label: "Email", value: "mukkeby99@gmail.com" },
@@ -54,46 +44,28 @@ export default function About() {
             </div>
           </div>
 
-          {/* 자기소개 + 기술스택 */}
-          <div className="lg:col-span-2 space-y-8">
-            <div className="space-y-4">
-              <p className="text-gray-700 leading-relaxed text-lg">
-                고려대학교{" "}
-                <strong className="text-gray-900">빅데이터 전공</strong>으로
-                데이터베이스와 데이터 분석의 기본기를 다졌고, 분석 결과를
-                실생활에 직접 쓰고 싶어 주식 데이터 자동화 웹을 독학으로
-                만들며 개발에 입문했습니다.
-              </p>
-              <p className="text-gray-600 leading-relaxed">
-                이후{" "}
-                <strong className="text-gray-900">KOSTOCK</strong>을 솔로로
-                개발·운영하며 코스콤과 정식 계약을 진행했고, 사용자 입장에서
-                모바일·웹 모두 잘 동작하도록 끝까지 책임지는 경험을
-                쌓았습니다.
-              </p>
-              <p className="text-gray-600 leading-relaxed">
-                현재는{" "}
-                <strong className="text-gray-900">에이드온 주식회사</strong>에서
-                AI Agent 기반 서비스를 풀스택으로 개발하며, DB·백엔드부터
-                프론트·배포까지 한 사람이 책임지는 방식으로 일하고 있습니다.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
-                주요 기술 스택
-              </h3>
-              <div className="flex flex-wrap gap-2.5">
-                {skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-4 py-2 rounded-full text-sm font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100 hover:bg-indigo-100 transition-colors"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
+          {/* 자기소개 */}
+          <div className="lg:col-span-2 space-y-4">
+            <p className="text-gray-700 leading-relaxed text-lg">
+              고려대학교{" "}
+              <strong className="text-gray-900">빅데이터 전공</strong>으로
+              데이터베이스와 데이터 분석의 기본기를 다졌고, 분석 결과를
+              실생활에 직접 쓰고 싶어 주식 데이터 자동화 웹을 독학으로
+              만들며 개발에 입문했습니다.
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              이후{" "}
+              <strong className="text-gray-900">KOSTOCK</strong>을 솔로로
+              개발·운영하며 코스콤과 정식 계약을 진행했고, 사용자 입장에서
+              모바일·웹 모두 잘 동작하도록 끝까지 책임지는 경험을
+              쌓았습니다.
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              현재는{" "}
+              <strong className="text-gray-900">에이드온 주식회사</strong>에서
+              AI Agent 기반 서비스를 풀스택으로 개발하며, DB·백엔드부터
+              프론트·배포까지 한 사람이 책임지는 방식으로 일하고 있습니다.
+            </p>
           </div>
         </div>
       </div>
