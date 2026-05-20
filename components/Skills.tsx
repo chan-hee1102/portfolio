@@ -9,17 +9,17 @@ const categories = [
   {
     title: "Backend",
     color: "text-blue-600 bg-blue-50",
-    skills: ["FastAPI", "Python", "PostgreSQL", "REST API", "SQLAlchemy"],
+    skills: ["FastAPI", "Python", "PostgreSQL", "SQLite", "SQLAlchemy"],
   },
   {
     title: "AI & Data",
     color: "text-emerald-600 bg-emerald-50",
-    skills: ["Claude API", "Anthropic SDK", "Pandas", "Supabase", "SSE"],
+    skills: ["Gemini API", "Groq Llama", "YOLOv8", "LightGBM", "Pandas"],
   },
   {
     title: "Infra",
     color: "text-orange-600 bg-orange-50",
-    skills: ["Docker", "Railway", "Cloudflare Tunnel", "Git", "Linux"],
+    skills: ["Docker", "Railway", "GitHub Actions", "Git", "Linux"],
   },
 ];
 

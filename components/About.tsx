@@ -49,24 +49,31 @@ export default function About() {
             <p className="text-gray-700 leading-relaxed text-lg">
               고려대학교{" "}
               <strong className="text-gray-900">빅데이터 전공</strong>으로
-              데이터 분석은 익숙했지만, 개발과 코드는 개발자의 영역이라고
-              생각했습니다. GPT가 유행하기 시작하면서 &ldquo;이제 내가 직접
-              만들 수 있겠다&rdquo;는 확신이 들었고, 그때부터 개발에
-              빠져들었습니다.
+              데이터 분석은 익숙했지만,
+              <br />
+              개발과 코드는 개발자의 영역이라고 생각했습니다.
+              <br />
+              GPT가 유행하기 시작하면서 &ldquo;이제 내가 직접 만들 수
+              있겠다&rdquo;는 확신이 들었고,
+              <br />
+              그때부터 개발에 빠져들었습니다.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              첫 결과물인 주식 데이터 자동화 웹을 시작으로,{" "}
+              첫 결과물인 주식 데이터 자동화 웹을 시작으로,
+              <br />
               <strong className="text-gray-900">KOSTOCK</strong>을 솔로로
-              개발·운영하며 코스콤(KOSCOM)과 정식 계약까지 진행했습니다. 그
-              과정에서 DB·백엔드·프론트·배포를 한 사람이 끝까지 책임지는
-              방식이 자연스러워졌습니다.
+              개발·운영하며 코스콤(KOSCOM)과 정식 계약까지 진행했습니다.
+              <br />그 과정에서 DB·백엔드·프론트·배포를 한 사람이 끝까지
+              책임지는 방식이 자연스러워졌습니다.
             </p>
             <p className="text-gray-600 leading-relaxed">
               현재는{" "}
               <strong className="text-gray-900">에이드온 주식회사</strong>에서
-              AI·컴퓨터 비전 기반 서비스를 풀스택으로 개발하고 있습니다. 새로
-              나오는 AI와 바이브 코딩 기술을 가장 먼저 시도하고, 실제 제품에
-              녹여 넣는 일이 가장 흥미롭습니다.
+              AI·컴퓨터 비전 기반 서비스를 풀스택으로 개발하고 있습니다.
+              <br />
+              새로 나오는 AI와 바이브 코딩 기술을 가장 먼저 시도하고,
+              <br />
+              실제 제품에 녹여 넣는 일이 가장 흥미롭습니다.
             </p>
           </div>
         </div>

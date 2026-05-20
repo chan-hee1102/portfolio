@@ -82,7 +82,7 @@ export default function Hero() {
 
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-10">
             반복되는 비효율을 AI로 자동화하고,
-            <br className="hidden sm:inline" />
+            <br />
             떠오른 아이디어를 동작하는 서비스로 끝까지 만듭니다.
           </p>
 
