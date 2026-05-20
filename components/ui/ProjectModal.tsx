@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -21,22 +21,51 @@ export default function ProjectModal({
   siteUrl,
   onClose,
 }: ProjectModalProps) {
+  const panelRef = useRef<HTMLDivElement>(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
   useEffect(() => {
     if (!open) return;
 
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key !== "Escape") return;
+      // 풀스크린 상태에서 Esc는 브라우저가 풀스크린 해제를 처리하므로
+      // 모달까지 닫지 않도록 한 단계만 빠져나가게 함
+      if (document.fullscreenElement) return;
+      onClose();
     };
     window.addEventListener("keydown", onKey);
+
+    const onFsChange = () =>
+      setIsFullscreen(Boolean(document.fullscreenElement));
+    document.addEventListener("fullscreenchange", onFsChange);
 
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
     return () => {
       window.removeEventListener("keydown", onKey);
+      document.removeEventListener("fullscreenchange", onFsChange);
       document.body.style.overflow = prevOverflow;
+      // 모달 닫을 때 풀스크린도 같이 해제
+      if (document.fullscreenElement) {
+        document.exitFullscreen().catch(() => {});
+      }
     };
   }, [open, onClose]);
+
+  const toggleFullscreen = async () => {
+    if (!panelRef.current) return;
+    try {
+      if (document.fullscreenElement) {
+        await document.exitFullscreen();
+      } else {
+        await panelRef.current.requestFullscreen();
+      }
+    } catch {
+      // 사용자 거부 / 브라우저 미지원 등은 조용히 무시
+    }
+  };
 
   const hasContent = Boolean(pdfUrl) || (screenshots && screenshots.length > 0);
 
@@ -58,7 +87,12 @@ export default function ProjectModal({
           <div className="absolute inset-0 bg-gray-900/60 backdrop-blur-sm" />
 
           <motion.div
-            className="relative z-10 w-full max-w-5xl h-[85vh] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col"
+            ref={panelRef}
+            className={`relative z-10 w-full bg-white shadow-2xl overflow-hidden flex flex-col ${
+              isFullscreen
+                ? "h-screen rounded-none"
+                : "max-w-5xl h-[85vh] rounded-2xl"
+            }`}
             initial={{ opacity: 0, scale: 0.96, y: 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 12 }}
@@ -120,6 +154,43 @@ export default function ProjectModal({
                 )}
                 <button
                   type="button"
+                  onClick={toggleFullscreen}
+                  className="inline-flex items-center justify-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors"
+                  aria-label={isFullscreen ? "전체화면 해제" : "전체화면"}
+                  title={isFullscreen ? "전체화면 해제" : "전체화면"}
+                >
+                  {isFullscreen ? (
+                    <svg
+                      className="h-5 w-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 9V4M9 9H4M9 9L4 4m11 5h5m-5 0V4m0 5l5-5M9 15v5m0-5H4m5 0l-5 5m11-5h5m-5 0v5m0-5l5 5"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      className="h-5 w-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                      />
+                    </svg>
+                  )}
+                </button>
+                <button
+                  type="button"
                   onClick={onClose}
                   className="inline-flex items-center justify-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors"
                   aria-label="닫기"
@@ -150,7 +221,11 @@ export default function ProjectModal({
                 />
               ) : screenshots && screenshots.length > 0 ? (
                 <div className="w-full h-full overflow-y-auto">
-                  <div className="max-w-3xl mx-auto py-6 px-4 sm:px-6 space-y-6">
+                  <div
+                    className={`mx-auto py-6 px-4 sm:px-6 space-y-6 ${
+                      isFullscreen ? "max-w-6xl" : "max-w-3xl"
+                    }`}
+                  >
                     {screenshots.map((src, i) => (
                       <div
                         key={src}
@@ -161,7 +236,11 @@ export default function ProjectModal({
                           alt={`${title ?? "Screenshot"} ${i + 1}`}
                           width={1600}
                           height={1000}
-                          sizes="(max-width: 768px) 100vw, 768px"
+                          sizes={
+                            isFullscreen
+                              ? "(max-width: 1280px) 100vw, 1280px"
+                              : "(max-width: 768px) 100vw, 768px"
+                          }
                           className="w-full h-auto"
                           priority={i === 0}
                         />

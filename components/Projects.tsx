@@ -51,9 +51,9 @@ const phases: Phase[] = [
     period: "2024 — 2025",
     title: "개발 입문 with GPT",
     shortName: "개발 입문기",
-    subtitle: "빅데이터 전공이 AI를 페어로 삼아 실제 개발에 뛰어든 시기",
+    subtitle: "데이터 전공자가 GPT를 페어 삼아 처음으로 코드를 만든 시기",
     description:
-      "데이터 분석에 머무르지 않고, GPT를 페어 프로그래머 삼아 웹·자동화·AI 기능까지 직접 만들어낸 시기입니다. 전공의 분석력을 실제로 동작하는 서비스 코드로 옮겨놓기 시작한 첫 단계였습니다.",
+      "데이터 분석에 머무르지 않고 GPT를 페어 삼아 웹·자동화·AI 기능까지 직접 만들기 시작한 시기입니다. 전공의 분석력을 실제로 동작하는 코드로 옮긴 첫 단계였습니다.",
     highlights: [
       {
         title: "Streamlit으로 필요한 웹 직접 제작",
@@ -105,9 +105,9 @@ const phases: Phase[] = [
     period: "2025 — 2026",
     title: "개인 프로젝트 및 실제 배포",
     shortName: "실제 배포",
-    subtitle: "AI 페어 프로그래밍으로 완성하고 24시간 운영하는 풀스택 서비스",
+    subtitle: "바이브 코딩으로 만들고 24시간 운영하는 유료 SaaS",
     description:
-      "AI 페어 프로그래밍을 본격적으로 도입해 DB·백엔드·프론트·배포까지 한 사람이 처음부터 끝까지 만들고 실제 운영까지 책임진 시기입니다. KOSTOCK Pro를 솔로로 개발·운영하며 실시간 데이터 처리와 사용자 UX를 직접 검증하고 있습니다.",
+      "AI 페어 프로그래밍을 본격적으로 도입해 DB·백엔드·프론트·배포까지 한 사람이 끝까지 책임진 시기입니다. KOSTOCK Pro를 솔로로 개발·운영하며 실시간 데이터 처리와 사용자 UX를 직접 검증하고, 코스콤과의 정식 계약까지 진행했습니다.",
     highlights: [
       {
         title: "Supabase + 한국투자증권(KIS) API",
@@ -247,6 +247,38 @@ const phases: Phase[] = [
         ],
       },
       {
+        id: "aidon-chatbot",
+        name: "개인 AI 어시스턴트 챗봇",
+        status: "개발 완료",
+        shortDesc:
+          "Gemini API + SSE 스트리밍 기반 회원제 챗봇 — Next.js 14 + SQLite + JWT 직접 구현",
+        longDesc:
+          "에이드온 사내 과제로 개발한 회원제 AI 어시스턴트 챗봇입니다. NextAuth·ORM 같은 외부 의존성 없이 JWT(jose)와 SQLite(better-sqlite3)를 직접 다뤄 인증·데이터 영속성을 처리했고, Gemini API의 스트리밍 응답을 SSE로 클라이언트에 흘려보내는 구조로 실시간 응답을 구현했습니다. 대화 히스토리 영구 저장, 컨텍스트 윈도우 관리, 대화 제목 자동 생성, 마크다운 렌더링까지 챗봇의 기본기를 처음부터 끝까지 직접 설계했습니다.",
+        stack: [
+          "Next.js 14",
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "SQLite (better-sqlite3)",
+          "Gemini API",
+          "JWT (jose)",
+          "Railway",
+        ],
+        features: [
+          "JWT 인증 직접 구현(jose + bcryptjs) — HttpOnly 쿠키 + Edge Runtime 미들웨어 인증",
+          "Gemini API 스트리밍을 SSE(Server-Sent Events)로 변환해 실시간 토큰 전달, 완료 후 메시지 DB 저장",
+          "다중 대화 세션 — 사이드바로 대화 목록 관리, 첫 메시지로 제목 자동 생성",
+          "컨텍스트 윈도우 — 토큰 비용 관리를 위해 최근 20개 메시지만 LLM에 전달",
+          "마크다운 + 코드 하이라이팅 (react-markdown · react-syntax-highlighter)",
+          "Railway 볼륨 마운트로 SQLite DB 영구 보존, 모든 SQL Prepared Statement로 Injection 방어",
+        ],
+        screenshots: [
+          "/projects/chatbot/1.png",
+          "/projects/chatbot/2.png",
+          "/projects/chatbot/3.png",
+        ],
+      },
+      {
         id: "aidon-site",
         name: "에이드온 공식 홈페이지",
         status: "운영 중",
@@ -272,6 +304,50 @@ const phases: Phase[] = [
           "다크 테마(#0F1012) 디자인 시스템, 반응형 레이아웃, Skip-link 등 접근성 고려",
         ],
         siteUrl: "https://aidon.ai.kr/",
+      },
+    ],
+  },
+  {
+    id: "phase-5-hobby",
+    period: "2025 — 현재",
+    title: "취미 개발",
+    shortName: "취미 개발",
+    subtitle: "호기심·친구들과의 필요에서 출발하는 사이드 프로젝트",
+    description:
+      "공식 프로젝트와 별개로, 호기심이나 친구들과의 필요에서 출발한 웹앱을 직접 만들어 봅니다. 떠오른 아이디어를 그날 안에 동작하는 결과물까지 끌고 가는 과정 자체를 즐기는 시기입니다.",
+    projects: [
+      {
+        id: "readyjob",
+        name: "ReadyJOB — 친구들과 함께하는 취준 트래커",
+        status: "개발 완료",
+        shortDesc:
+          "같이 취업 준비하는 친구들끼리 접속 현황·공고·자료를 가볍게 공유하는 웹앱",
+        longDesc:
+          "같이 취업을 준비하는 친구들끼리 누가 접속해 있는지, 어떤 공고에 관심을 두고 있는지, 이력서·포트폴리오는 어디까지 정리했는지를 가볍게 공유하기 위해 만든 사이드 프로젝트입니다. 채용 공고 URL을 붙여넣으면 OG 메타데이터로 회사·제목·썸네일이 자동 추출되고, 마감일·중요도·상태를 친구별로 분리해 관리합니다. 파일 보관함은 공개/비공개 토글이 가능해 친구들과 보여주고 싶은 자료만 골라 공유할 수 있게 설계했습니다.",
+        stack: [
+          "Next.js 14",
+          "React 18",
+          "TypeScript",
+          "Tailwind CSS",
+          "SQLite (better-sqlite3)",
+          "next-themes",
+        ],
+        features: [
+          "친구 접속 현황 — 60초 heartbeat 기반 presence 추적, 누가 몇 시간째 접속 중인지 한눈에",
+          "채용 공고 URL 미리보기 — OG 메타데이터로 회사·제목·썸네일 자동 추출",
+          "친구별 분리된 공고 보드 — 마감일·중요도(★)·상태 관리",
+          "파일 보관함 — 포트폴리오·이력서·자소서 업로드 + 공개/비공개 토글",
+          "Repository 추상화 — 외부 DB(Turso 등)로 무중단 마이그레이션 가능한 구조",
+          "다크 모드 · 모바일 반응형 — deep navy + violet 커스텀 토큰",
+        ],
+        screenshots: [
+          "/projects/readyjob/1.png",
+          "/projects/readyjob/2.png",
+          "/projects/readyjob/3.png",
+          "/projects/readyjob/4.png",
+          "/projects/readyjob/5.png",
+          "/projects/readyjob/6.png",
+        ],
       },
     ],
   },
@@ -301,8 +377,8 @@ export default function Projects() {
           </h2>
         </div>
         <p className="text-center text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-          데이터 전공 → 독학으로 웹 개발 입문 → Claude Code로 풀스택 서비스
-          완성까지, 각 시기마다 어떤 프로젝트로 성장해왔는지 정리했습니다.
+          데이터 분석에서 시작해 AI와 바이브 코딩으로 풀스택 서비스까지,
+          시기별로 어떤 프로젝트로 발전해왔는지 정리했습니다.
         </p>
 
         <div className="mb-20 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
@@ -332,7 +408,7 @@ export default function Projects() {
                     {String(phaseIdx + 1).padStart(2, "0")}
                   </span>
                 </div>
-                <div className="text-5xl sm:text-6xl font-black text-gray-900 tabular-nums tracking-tighter leading-none">
+                <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 tabular-nums tracking-tighter leading-none">
                   {phase.period}
                 </div>
               </div>

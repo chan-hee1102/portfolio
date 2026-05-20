@@ -7,4 +7,8 @@ html {
 body {
   background-color: #ffffff;
   color: #111827;
+  /* 한글 어절 단위 줄바꿈 — 단어 중간에서 끊기지 않도록 */
+  word-break: keep-all;
+  /* 영어 단어/URL이 컨테이너를 넘는 경우엔 단어 분리 허용 */
+  overflow-wrap: break-word;
 }

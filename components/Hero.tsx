@@ -81,9 +81,9 @@ export default function Hero() {
           </p>
 
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-10">
-            반복적인 비효율을 AI 자동화 웹으로 직접 풀어내고,
+            반복되는 비효율을 AI로 자동화하고,
             <br className="hidden sm:inline" />
-            그 과정에서 빠진 바이브 코딩으로 풀스택을 직접 만듭니다.
+            떠오른 아이디어를 동작하는 서비스로 끝까지 만듭니다.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -4,26 +4,25 @@ const experiences = [
   {
     type: "work" as const,
     period: "2026.04 — 현재",
-    role: "AI Agent 개발자",
+    role: "AI 풀스택 개발자",
     org: "에이드온 주식회사",
-    orgDesc: "AI 스타트업",
+    orgDesc: "AI 솔루션 스타트업",
     description: [
-      "AI Agent 기반 서비스 개발 (진행 중)",
-      "Claude API 연동 기능 설계 및 구현",
-      "프론트엔드부터 백엔드·배포까지 풀스택 담당",
+      "AI·컴퓨터 비전 기반 사내 제품과 외부 고객사 프로젝트 풀스택 개발",
+      "AI CCTV 안전 감지 시스템(YOLOv8), KB국민은행 DMS, 자사 공식 홈페이지 등",
+      "프론트엔드·백엔드·배포까지 한 사람이 끝까지 책임",
     ],
   },
   {
     type: "work" as const,
     period: "2025 — 2026",
-    role: "KOSTOCK 개발 및 계약 진행",
+    role: "KOSTOCK Pro 솔로 개발·운영",
     org: "KOSTOCK Pro",
-    orgDesc: "솔로 프로젝트 → 코스콤 정식 계약",
+    orgDesc: "개인 SaaS → 코스콤 정식 계약",
     description: [
-      "한국 주식 테마 분석 SaaS 서비스 솔로 개발",
+      "한국 주식 테마 분석 SaaS 솔로 풀스택 개발 (Next.js · Supabase · Railway)",
       "코스콤(KOSCOM)과 정식 계약 진행 (2026년 6월 출시 예정)",
-      "사용자 입장에서 모바일·웹 양쪽이 모두 잘 동작하도록 설계",
-      "Supabase DB 설계, Railway 24시간 실시간 배포 운영",
+      "24시간 실시간 데이터 처리·배포 운영, 모바일·웹 UX 직접 검증",
     ],
   },
   {
@@ -31,10 +30,9 @@ const experiences = [
     period: "2020 — 2022",
     role: "군 복무",
     org: "대한민국 육군",
-    orgDesc: "병역",
+    orgDesc: "병역 (만기 전역)",
     description: [
-      "학업 중단 후 만기 전역",
-      "복학 후 빅데이터 전공 학업 및 개인 프로젝트 재개",
+      "학업 중단 후 만기 전역, 복학하여 학업·프로젝트 재개",
     ],
   },
   {
@@ -44,9 +42,8 @@ const experiences = [
     org: "고려대학교",
     orgDesc: "학사 (군 복무 2020~2022 포함)",
     description: [
-      "빅데이터 전공 — 데이터베이스·통계·데이터 분석 기초 학습",
-      "Python, SQL, 머신러닝 심화 학습",
-      "주식 데이터 자동화 개인 프로젝트로 개발 입문",
+      "빅데이터 전공 — 데이터베이스·통계·머신러닝 기초",
+      "GPT 등장 이후 주식 데이터 자동화 개인 프로젝트로 개발 입문",
     ],
   },
 ];
