@@ -43,45 +43,8 @@ const phases: Phase[] = [
     shortName: "데이터 전공기",
     subtitle: "고려대학교 빅데이터 전공 — 데이터의 기반을 다진 시기",
     description:
-      "빅데이터 전공으로 통계·머신러닝·데이터베이스를 학습하며, 데이터를 다루는 기본기를 쌓았던 시기입니다. 가설을 세우고 데이터로 검증하는 분석 워크플로우를 전공 프로젝트로 직접 경험했습니다.",
-    projects: [
-      {
-        id: "univ-insomnia",
-        name: "불면증 발병 예측 분석",
-        status: "완료",
-        shortDesc: "로지스틱 회귀로 불면증 발병 요인을 식별한 통계 분석 프로젝트",
-        longDesc:
-          "Kaggle 불면증 데이터 7만 건을 활용해, 12개 변수 중 어떤 요인이 불면증 발병에 영향을 미치는지 로지스틱 회귀모형으로 분석한 학부 범주형자료분석 PBL 프로젝트입니다. 카이제곱 검정으로 변수 선택, VIF로 다중공선성 확인, 가능도비 검정으로 모형 적합도까지 단계별로 검증했습니다.",
-        stack: ["R", "glm", "로지스틱 회귀", "통계 검정"],
-        features: [
-          "Kaggle 불면증 데이터 70,001건 · 12개 변수 분석",
-          "이상치 제거 + age 변수 범주화 등 전처리 파이프라인 설계",
-          "카이제곱 검정으로 비유의 변수(성별·연령) 제거",
-          "VIF로 다중공선성 확인 (모든 변수 < 2)",
-          "최종 모델 AUC 0.78 / 정확도 0.73",
-          "스트레스 1단위 증가 → 발병 확률 약 71% 증가 등 변수별 영향도 해석",
-        ],
-        pdfUrl: "/projects/불면증발병원인분석.pdf",
-      },
-      {
-        id: "univ-soccer",
-        name: "축구 경기 승부 예측 모델",
-        status: "완료",
-        shortDesc: "EPL 30년 데이터로 홈/무/패 예측 — 단일 모델에서 앙상블까지",
-        longDesc:
-          "Kaggle 프리미어리그 데이터를 사용해 경기 결과(홈 승·무·패)를 예측하는 분류 모델을 만든 학부 전공 프로젝트입니다. 단일 모델(로지스틱·SVM·판별분석)의 정확도가 65% 수준에 머무르자, 변수를 확장하고 그리드 서치와 앙상블(Bagging·Adaboost·XGBoost)을 차례로 적용해 최종 XGBoost 71.8%까지 끌어올렸습니다. 마지막에는 팀 이름만 입력하면 결과를 반환하는 예측 함수까지 구현했습니다.",
-        stack: ["Python", "scikit-learn", "XGBoost", "pandas"],
-        features: [
-          "Kaggle EPL 데이터 11,114건 · 22개 변수 수집·정제",
-          "결측치·이상치 처리 후 9,000건 데이터셋으로 축약",
-          "단일 모델 비교: 로지스틱·판별분석·SVM·KNN (정확도 64~66%)",
-          "그리드 서치 + 앙상블(Bagging·Pasting·Adaboost·GBM·XGBoost) 단계적 개선",
-          "최종 XGBoost 정확도 71.8% — 초기 모델 대비 +7%p 향상",
-          "팀명 입력 → 홈 승/무/패 반환 예측 함수 구현",
-        ],
-        pdfUrl: "/projects/축구 데이터를 이용한 승부 예측 모델.pdf",
-      },
-    ],
+      "빅데이터 전공으로 통계·머신러닝·데이터베이스를 학습하며 데이터를 다루는 기본기를 다진 시기입니다. 불면증 발병 예측, 축구 승부 예측 같은 분석을 전공 프로젝트로 진행하면서 가설→검증 사이클을 익혔고, 분석 결과를 실제로 쓰고 싶다는 동기에서 다음 단계인 웹 개발로 자연스럽게 넘어가게 됐습니다.",
+    projects: [],
   },
   {
     id: "phase-2-self",
@@ -672,10 +635,14 @@ export default function Projects() {
                   </div>
                 ) : (
                   <>
-                    <div className="mb-8">{header}</div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {cards}
+                    <div className={phase.projects.length > 0 ? "mb-8" : ""}>
+                      {header}
                     </div>
+                    {phase.projects.length > 0 && (
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {cards}
+                      </div>
+                    )}
                   </>
                 )}
               </div>
