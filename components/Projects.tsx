@@ -209,35 +209,106 @@ const phases: Phase[] = [
     period: "2026 — 현재",
     title: "주식회사 에이드온",
     shortName: "AI Agent",
-    subtitle: "AI Agent 시작 — 회사 제품으로 AI Agent 영역에 본격 진입",
+    subtitle: "AI Agent · 컴퓨터 비전 — 회사 제품으로 AI 영역에 본격 진입",
     description:
-      "주식회사 에이드온에 합류해 AI Agent 기반 서비스를 풀스택으로 개발하기 시작한 시기입니다. 개인 프로젝트에서 쌓은 데이터·풀스택 경험을 실제 회사 제품에 적용하며 AI Agent 영역으로 본격적으로 진입하고 있습니다.",
-    highlights: [
-      {
-        title: "AI Agent 기반 서비스 풀스택 개발",
-        description:
-          "회사 제품의 AI Agent 영역을 프론트엔드·백엔드·배포까지 한 사람이 일관성 있게 책임지는 방식으로 만들고 있습니다. 개인 프로젝트에서 쌓은 풀스택 역량을 실제 회사 제품에 그대로 적용하는 과정입니다.",
-      },
-      {
-        title: "프롬프트 엔지니어링 + AI 추론 설계",
-        description:
-          "AI Agent의 추론 흐름과 도구 사용 패턴을 직접 설계하고, 프롬프트를 반복 정교화하여 결과의 일관성과 안정성을 확보하는 작업을 진행하고 있습니다.",
-      },
-    ],
+      "주식회사 에이드온에 합류해 AI·컴퓨터 비전 기반 서비스를 풀스택으로 개발하기 시작한 시기입니다. 개인 프로젝트에서 쌓은 데이터·풀스택 경험을 실제 회사 제품에 적용하며, 실시간 추론과 운영 시스템까지 직접 구현하고 있습니다.",
     projects: [
       {
-        id: "aidon-agent",
-        name: "에이드온 AI Agent 서비스",
-        status: "진행 중",
-        shortDesc: "에이드온 주식회사 — AI Agent 기반 서비스 개발 (재직 중)",
+        id: "aidon-cctv",
+        name: "AI CCTV — 건설현장 안전 감지",
+        status: "개발 완료",
+        shortDesc:
+          "건설현장 CCTV로 안전모 미착용·낙상·화재·침입을 YOLOv8로 실시간 감지하는 풀스택 시스템",
         longDesc:
-          "에이드온 주식회사에서 AI Agent 기반 서비스를 풀스택으로 개발하고 있습니다. 상세 내용은 추후 공개 예정입니다.",
-        stack: ["Next.js", "FastAPI", "Claude API", "PostgreSQL", "Docker"],
-        features: [
-          "AI Agent 기반 서비스 설계 및 구현",
-          "Claude API 연동 및 프롬프트 엔지니어링",
-          "프론트엔드부터 백엔드·배포까지 풀스택 담당",
+          "건설현장 CCTV 영상을 받아 YOLOv8 기반 다단계 추론 파이프라인으로 안전모 미착용, 낙상, 화재/연기, 위험구역 침입을 자동 감지·기록·시각화하는 풀스택 시스템입니다. RTSP·로컬 파일·웹캠 등 다양한 영상 소스를 다중 카메라로 동시 처리하고, WebSocket으로 주석 프레임을 실시간 송출합니다. 운영자가 이벤트를 확인 처리하고 주·월 단위 PDF 리포트까지 받아볼 수 있도록 백엔드부터 프론트까지 한 사람이 풀스택으로 구현했습니다.",
+        stack: [
+          "Next.js 16",
+          "React 19",
+          "FastAPI",
+          "YOLOv8",
+          "OpenCV",
+          "PostgreSQL",
+          "WebSocket",
+          "Docker",
         ],
+        features: [
+          "YOLOv8 다단계 추론: 사람 탐지 → PPE 분류 → 화재/연기 (+HSV 사전필터) → 유형별 지속 검증으로 오감지 감소",
+          "다중 카메라(RTSP · 로컬 파일 · 내장 웹캠) 동시 처리 + WebSocket(/ws/view) 실시간 프레임 송출",
+          "ByteTrack 기반 사람 트래킹 + 2단계 트리거 아키텍처로 이벤트 변환율 관리",
+          "이벤트 로그·확인 처리·대시보드 KPI·시간대별 추이·유형별 분포 시각화 (recharts)",
+          "주·월 단위 운영 리포트 PDF 자동 생성 (reportlab)",
+          "JWT 기반 인증 + Refresh 토큰 자동 재발급, 카메라 CRUD·ROI 설정·웹캠 송출까지 REST API로 통합",
+        ],
+        screenshots: [
+          "/projects/aidon-cctv/1.png",
+          "/projects/aidon-cctv/2.png",
+          "/projects/aidon-cctv/3.png",
+          "/projects/aidon-cctv/4.png",
+          "/projects/aidon-cctv/5.png",
+        ],
+      },
+      {
+        id: "kb-portal",
+        name: "KB국민은행 IT자산관리포털 (DMS)",
+        status: "개발 완료",
+        shortDesc:
+          "KB국민은행 사내 IT자산 통합 관리 시스템 — 60여 개 화면 풀스택 프로토타입",
+        longDesc:
+          "KB국민은행 사내 IT자산 통합 관리 시스템(DMS)의 차세대 프로토타입을 풀스택으로 개발했습니다. 레거시 DMS의 메뉴 구조(번호 기반 라우트)를 그대로 옮기면서 Next.js App Router 위에 공통·관리자·H/W·S/W·센터자산 등 5개 메뉴 그룹, 60여 개 화면을 일관된 디자인 시스템으로 구축했습니다. 사이드바·헤더 공통 레이아웃, 부서 트리·메뉴 트리 같은 재귀 트리 컴포넌트, recharts·d3 기반 대시보드까지 직접 설계했고, FastAPI 백엔드와 PostgreSQL을 Docker Compose로 묶어 한 번에 띄울 수 있도록 정리했습니다.",
+        stack: [
+          "Next.js 16",
+          "React 19",
+          "TypeScript",
+          "Tailwind v4",
+          "FastAPI",
+          "PostgreSQL",
+          "recharts",
+          "Docker Compose",
+        ],
+        features: [
+          "레거시 DMS 메뉴 구조(번호 기반 라우트, 예: /901600=대시보드)를 1:1로 마이그레이션",
+          "60여 개 화면 · 5개 메뉴 그룹(공통 / 관리자 / H/W / S/W / 센터자산) 풀스택 구현",
+          "Next.js App Router 라우트 그룹으로 인증 영역(사이드바+헤더 레이아웃)과 로그인 분리",
+          "부서 트리·메뉴 트리 등 재귀 expand/collapse 패턴을 재사용 컴포넌트로 추상화",
+          "recharts·d3 기반 대시보드 — 자산 통계·추이 시각화",
+          "FastAPI + PostgreSQL + Frontend 3-tier를 Docker Compose로 통합 오케스트레이션",
+          "KB 브랜드 컬러(#FFB800) 기반 디자인 시스템 — 카드·버튼·상태 표시 일관성 확보",
+        ],
+        screenshots: [
+          "/projects/kb-portal/1.png",
+          "/projects/kb-portal/2.png",
+          "/projects/kb-portal/3.png",
+          "/projects/kb-portal/4.png",
+          "/projects/kb-portal/5.png",
+          "/projects/kb-portal/6.png",
+        ],
+      },
+      {
+        id: "aidon-site",
+        name: "에이드온 공식 홈페이지",
+        status: "운영 중",
+        shortDesc:
+          "주식회사 에이드온 코퍼레이트 사이트 — 단일 페이지 스크롤 스토리텔링 + 견적 상담 문의",
+        longDesc:
+          "주식회사 에이드온의 공식 코퍼레이트 사이트를 처음부터 끝까지 직접 구축했습니다. '산업이 필요로 하는 AI 솔루션을 만들고 함께 운영한다'는 핵심 메시지를 중심으로, How AID ON works(일하는 방식 4단계) → Inside AID ON(4가지 핵심 영역) → 산업 모듈 카탈로그 → 비교 테이블 → 사례 → 문의까지 회사의 가치 제안을 한 호흡의 스크롤 흐름으로 풀어냈습니다. 다크 테마(#0F1012) 디자인 시스템과 섹션별 스크롤 인터랙션, 견적 상담 문의 폼까지 한 사람이 설계·구현해 라이브 운영 중입니다.",
+        stack: [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "반응형 디자인",
+          "다크 테마 시스템",
+          "Static Hosting",
+        ],
+        features: [
+          "단일 페이지 스크롤 스토리텔링 — 회사가 일하는 방식·솔루션·사례를 한 호흡으로 전달",
+          "Inside AID ON 섹션 — Domain Console · Data Pipeline · Field App · Operations 4개 영역의 스크롤 인터랙션 시각화",
+          "How AID ON works — 도메인 진단부터 특화 AI 구축까지 4단계 프로세스 다이어그램",
+          "AID ON vs 자체 개발 vs 일반 SaaS 비교 테이블로 차별점 강조",
+          "산업 모듈 카탈로그 — Document/Generation · Safety/Site · Edge AI · Schedule/Cost · Operations/Knowledge",
+          "Contact 섹션 — '상담 시작하기' CTA + Email 기반 견적 상담 문의 통합",
+          "다크 테마(#0F1012) 디자인 시스템, 반응형 레이아웃, Skip-link 등 접근성 고려",
+        ],
+        siteUrl: "https://aidon.ai.kr/",
       },
     ],
   },
