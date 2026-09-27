@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from "react";
 const navLinks = [
   { label: "소개", href: "#about" },
   { label: "경력", href: "#experience" },
-  { label: "검색·AI 결과", href: "#proof" },
+  { label: "KOSTOCK 성과", href: "#proof" },
   { label: "프로젝트", href: "#projects" },
   { label: "연락", href: "#contact" },
 ];

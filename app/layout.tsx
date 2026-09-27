@@ -5,13 +5,13 @@ import ScrollProgress from "@/components/ui/ScrollProgress";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://portfolio-chanhee.vercel.app"),
-  title: "임찬희 | 풀스택 개발자 · AEO·GEO·SEO",
+  title: "임찬희 | 1인 풀스택 개발자",
   description:
-    "서비스를 만들고, 네이버·구글·ChatGPT가 그 서비스를 찾아오게 만드는 풀스택 개발자 임찬희의 포트폴리오입니다.",
+    "기획부터 디자인, 개발, 배포, 운영까지 혼자 하는 풀스택 개발자 임찬희의 포트폴리오입니다. 직접 만든 KOSTOCK은 AEO·GEO·SEO만으로 최근 한 달 동안 100명 넘게 가입했습니다.",
   openGraph: {
-    title: "임찬희 | 풀스택 개발자 · AEO·GEO·SEO",
+    title: "임찬희 | 1인 풀스택 개발자",
     description:
-      "직접 만든 KOSTOCK으로 네이버 웹문서 1위, Perplexity 첫 번째 출처. 지금은 윈에이드에서 병원 AEO·GEO·SEO를 맡고 있습니다.",
+      "혼자 만들어 운영하는 KOSTOCK, 광고 없이 한 달 가입 100명 넘음. 지금은 윈에이드에서 병원 마케팅 SaaS를 운영합니다.",
     type: "website",
     locale: "ko_KR",
   },

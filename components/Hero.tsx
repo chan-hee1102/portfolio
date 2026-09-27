@@ -8,7 +8,7 @@ type VantaEffect = { destroy: () => void };
 
 const NAME = ["임", "찬", "희"];
 /** 첫 화면 근거 한 줄 — 자세한 캡처는 #proof */
-const PROOF = ["검색어 3개에서 네이버 1위", "Perplexity 첫 번째 출처", "ChatGPT로 들어온 가입자"];
+const PROOF = ["한 달 가입 100명+", "검색어 3개에서 네이버 1위", "Perplexity 첫 번째 출처"];
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -72,7 +72,7 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-5xl mx-auto text-center pt-20 pb-24">
         <motion.a
-          href="#experience"
+          href="#proof"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE }}
@@ -82,7 +82,7 @@ export default function Hero() {
             <span className="animate-ping-soft absolute inset-0 rounded-full bg-emerald-400" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
           </span>
-          지금은 윈에이드에서 병원 AEO·GEO·SEO
+          직접 만든 SaaS 운영 중 · 한 달 가입 100명+
         </motion.a>
 
         <h1
@@ -109,7 +109,7 @@ export default function Hero() {
           transition={{ delay: 0.55, duration: 0.6 }}
           className="mt-4 text-base sm:text-lg font-bold text-indigo-600 tracking-[-0.01em]"
         >
-          풀스택 개발자 · AEO·GEO·SEO
+          1인 풀스택 개발자
         </motion.p>
 
         <motion.p
@@ -118,7 +118,7 @@ export default function Hero() {
           transition={{ delay: 0.7, duration: 0.7, ease: EASE }}
           className="mt-5 text-xl sm:text-3xl font-bold text-gray-900 leading-snug tracking-[-0.03em]"
         >
-          <Lines text={"서비스를 만들고,\n네이버와 AI 검색에 나오게 합니다."} />
+          <Lines text={"기획부터 디자인, 배포, 운영까지\n혼자 만들고 키웁니다."} />
         </motion.p>
 
         <motion.div

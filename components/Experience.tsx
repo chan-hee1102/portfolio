@@ -18,20 +18,33 @@ interface Entry {
 
 const ENTRIES: Entry[] = [
   {
+    kind: "own",
+    period: "2025 — 현재",
+    org: "KOSTOCK",
+    orgDesc: "직접 만들어 운영하는 SaaS",
+    role: "1인 기획·디자인·개발·배포·운영",
+    current: true,
+    items: [
+      { t: "최근 한 달 가입 100명 넘음", d: "2026년 9월 기준, 광고 없이" },
+      { t: "AEO·GEO·SEO로 네이버 웹문서 1위", d: "검색어 3개에서 1위, Perplexity 첫 번째 출처, ChatGPT를 타고 들어온 가입자" },
+      { t: "코스콤 정식 시세 계약", d: "2026년 6월부터 장중 실시간 운영" },
+    ],
+  },
+  {
     kind: "work",
     period: "2026.06 — 현재",
     org: "윈에이드",
     orgDesc: "병원 마케팅 대행사",
-    role: "AEO·GEO·SEO, 풀스택 개발",
+    role: "풀스택 개발, 병원 마케팅 SaaS 운영",
     current: true,
     items: [
       {
-        t: "병원 마케팅 AI SaaS 「WINAI」 개발",
+        t: "병원 마케팅 AEO·GEO·SEO SaaS 「WINAI」 개발·운영",
         d: "블로그 원고·이미지 생성, 의료광고법 검증, AI 검색 노출 확인을 한 서비스로 묶었습니다",
       },
       {
-        t: "GAMEX 2026 MEDIT 부스에서 AEO·GEO 진단 운영",
-        d: "병원 이름만 넣으면 ChatGPT·Gemini가 추천할 수 있는 상태인지 1분 안에 알려 줍니다",
+        t: "GAMEX 2026 현장 진단으로 92명 가입",
+        d: "MEDIT 부스에서 병원 이름만 넣으면 AI 노출 상태를 1분 안에 진단했고, 가입으로 이어졌습니다",
       },
       {
         t: "치과 홈페이지 제작과 AEO·GEO·SEO 적용",
@@ -49,18 +62,6 @@ const ENTRIES: Entry[] = [
       { t: "건설현장 AI CCTV 안전 감지 시스템", d: "YOLOv8 실시간 추론, 이벤트 확인 화면, PDF 리포트를 만들었습니다" },
       { t: "KB국민은행 IT자산관리포털(DMS) 프로토타입", d: "60여 개 화면, 5개 메뉴 그룹" },
       { t: "회원제 AI 챗봇과 회사 공식 홈페이지" },
-    ],
-  },
-  {
-    kind: "own",
-    period: "2025 — 현재",
-    org: "KOSTOCK",
-    orgDesc: "국내주식 실시간 섹터 분류 서비스",
-    role: "기획·개발·운영 1인",
-    items: [
-      { t: "코스콤 정식 시세 계약", d: "2026년 6월부터 장중 실시간 운영" },
-      { t: "거래대금 상위 종목을 35개 섹터로 실시간 분류" },
-      { t: "광고 없이 네이버 웹문서 1위", d: "Perplexity 첫 번째 출처, ChatGPT를 타고 들어온 가입자" },
     ],
   },
   {

@@ -24,10 +24,10 @@ export default function Contact() {
       <div className="max-w-5xl mx-auto text-center">
         <p className="text-sm font-bold text-indigo-600 mb-3">연락</p>
         <h2 className="text-3xl sm:text-5xl font-extrabold text-gray-900 tracking-[-0.03em] mb-5">
-          편하게 연락 주세요
+          읽어 주셔서 감사합니다
         </h2>
         <p className="text-gray-500 mb-12 max-w-md mx-auto text-base leading-relaxed">
-          <Lines text={"채용, 협업, 프로젝트 이야기 모두 좋습니다.\n메일 한 통이면 됩니다."} />
+          <Lines text={"궁금하신 점이나 더 보고 싶은 자료가 있으시면\n메일로 연락 주세요. 빠르게 답장드리겠습니다."} />
         </p>
 
         <div className="mx-auto flex w-full max-w-[420px] items-stretch justify-center gap-2">

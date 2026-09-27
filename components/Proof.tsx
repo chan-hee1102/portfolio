@@ -138,14 +138,35 @@ export default function Proof() {
           transition={{ duration: 0.7, ease: EASE }}
           className="text-center"
         >
-          <p className="text-sm font-bold text-indigo-300 mb-3">검색과 AI</p>
+          <p className="text-sm font-bold text-indigo-300 mb-3">KOSTOCK 성과</p>
           <h2 className="text-3xl sm:text-5xl font-extrabold tracking-[-0.03em] leading-tight">
-            <Lines text={"직접 만든 서비스가\n검색과 AI에 이렇게 잡힙니다"} />
+            <Lines text={"광고 없이, 검색과 AI로\n한 달에 100명을 모았습니다"} />
           </h2>
           <p className="mt-5 text-[15px] sm:text-base text-white/65 leading-relaxed">
-            <Lines text={`KOSTOCK은 광고를 쓰지 않습니다.\n아래는 ${CAPTURED}에 직접 검색해서 찍은 화면 그대로입니다.`} />
+            <Lines text={`KOSTOCK은 혼자 만들어 운영하는 국내주식 SaaS입니다.\nAEO·GEO·SEO만으로 최근 한 달 동안 100명 넘게 가입했습니다(2026년 9월 기준).\n아래는 ${CAPTURED}에 직접 검색해서 찍은 화면 그대로입니다.`} />
           </p>
         </motion.div>
+
+        {/* 숫자 세 개 — 가입이 먼저, 그 가입을 만든 검색·AI 노출이 뒤 */}
+        <dl className="mx-auto mt-14 grid max-w-4xl grid-cols-1 divide-y divide-white/10 border-y border-white/10 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+          {[
+            { v: "100명+", k: "최근 한 달 가입" },
+            { v: "1위", k: "네이버 웹문서, 검색어 3개" },
+            { v: "첫 번째", k: "Perplexity 답변 출처" },
+          ].map((m, i) => (
+            <motion.div
+              key={m.k}
+              initial={reduce ? false : { opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 + i * 0.1, duration: 0.55, ease: EASE }}
+              className="px-6 py-6 text-center sm:py-8"
+            >
+              <dd className="text-4xl sm:text-5xl font-extrabold tracking-[-0.04em] text-white">{m.v}</dd>
+              <dt className="mt-2 text-sm text-white/60">{m.k}</dt>
+            </motion.div>
+          ))}
+        </dl>
 
         {/* 1. 네이버 웹문서 */}
         <div className="mt-20 sm:mt-28 grid items-center gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
@@ -313,7 +334,7 @@ export default function Proof() {
         <div className="mt-24 sm:mt-32 rounded-3xl border border-white/10 bg-white/[0.03] p-6 sm:p-10">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <h3 className="text-xl sm:text-3xl font-extrabold tracking-[-0.03em]">한 일은 이렇습니다</h3>
-            <p className="text-sm text-white/55">같은 방법을 지금 병원 홈페이지에 쓰고 있습니다</p>
+            <p className="text-sm text-white/55">같은 방법을 지금 윈에이드 SaaS에도 쓰고 있습니다</p>
           </div>
           <ul className="mt-6 grid gap-x-10 sm:grid-cols-2">
             {HOW.map((h, i) => (

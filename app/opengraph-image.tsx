@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "임찬희 | 풀스택 개발자 · AEO·GEO·SEO";
+export const alt = "임찬희 | 1인 풀스택 개발자";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -75,7 +75,7 @@ export default async function Image() {
               fontWeight: 500,
             }}
           >
-            Fullstack Developer · AEO · GEO · SEO
+            Solo Fullstack Developer
           </div>
 
           <div
@@ -85,7 +85,7 @@ export default async function Image() {
               gap: 16,
             }}
           >
-            {["Next.js", "Supabase", "KOSTOCK", "Naver #1"].map((t) => (
+            {["Plan", "Design", "Build", "Ship", "Run"].map((t) => (
               <div
                 key={t}
                 style={{

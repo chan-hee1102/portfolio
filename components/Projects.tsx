@@ -101,10 +101,14 @@ const phases: Phase[] = [
     period: "2025 — 현재",
     title: "직접 만들고, 운영하기",
     shortName: "직접 운영",
-    subtitle: "혼자 만들어 실제 사용자에게 내놓은 서비스",
+    subtitle: "혼자 기획·디자인·개발·배포·운영한 서비스",
     description:
-      "기획부터 DB, 서버, 화면, 배포까지 혼자 맡아‖실제로 사람들이 쓰는 서비스를 내놓았습니다.\n친구들과 같이 쓰려고 만든 작은 웹앱도 이때 만들었습니다.",
+      "기획, 디자인, DB, 서버, 화면, 배포, 운영까지 혼자 맡았습니다.\nKOSTOCK은 최근 한 달 동안‖100명 넘게 가입한 서비스가 됐습니다.",
     highlights: [
+      {
+        title: "광고 없이 한 달 가입 100명+",
+        description: "AEO·GEO·SEO로 네이버 웹문서 1위와 Perplexity 첫 번째 출처를 만들었고, 그 노출이 가입으로 이어졌습니다.",
+      },
       {
         title: "코스콤 정식 시세 계약",
         description: "무료 API로 시작했다가, 서비스로 내놓을 수 있는 데이터가 필요해 코스콤과 정식 계약을 맺고 2026년 6월 실시간 시세로 옮겼습니다.",
@@ -123,8 +127,8 @@ const phases: Phase[] = [
         id: "kostock",
         name: "KOSTOCK",
         status: "운영 중",
-        badge: "코스콤 정식 시세",
-        shortDesc: "거래대금 상위 종목을 35개 섹터로 실시간 분류하는 국내주식 서비스",
+        badge: "한 달 가입 100명+",
+        shortDesc: "거래대금 상위 종목을 35개 섹터로 실시간 분류하는 국내주식 SaaS. 코스콤 정식 시세로 운영합니다.",
         longDesc:
           "오늘 어느 섹터로 돈이 몰렸는지 한 화면에서 보는 서비스입니다.\n코스콤 정식 계약 시세로 코스피·코스닥 거래대금 상위 종목을‖장중 내내 집계하고 35개 섹터로 묶습니다.\n회원 가입, 관리자 화면, 방문 통계까지 직접 만들어 운영하고 있습니다.",
         siteUrl: "https://kostock.taif.kr",
@@ -286,13 +290,14 @@ const phases: Phase[] = [
     period: "2026.06 — 현재",
     title: "윈에이드",
     shortName: "윈에이드",
-    subtitle: "병원 마케팅 대행사에서 AEO·GEO·SEO",
+    subtitle: "병원 마케팅 대행사에서 SaaS 개발·운영",
     description:
-      "병원이 네이버·구글 검색과 ChatGPT 답변에 나오게 하는 일을 합니다.\nKOSTOCK으로 먼저 확인한 방법을 병원 홈페이지에 옮기고,‖병원 마케팅 SaaS와 AI 노출 진단 도구도 만들었습니다.",
+      "병원 마케팅 AEO·GEO·SEO SaaS를 만들고 운영합니다.\nGAMEX 2026 박람회에서 진행한 AI 노출 진단이‖가입으로 이어져 92명이 가입했습니다.",
     projects: [
       {
         id: "winai",
-        name: "WINAI · 병원 마케팅 AI SaaS",
+        name: "WINAI · 병원 마케팅 AEO·GEO·SEO SaaS",
+        badge: "GAMEX 진단 후 92명 가입",
         status: "운영 중",
         shortDesc: "블로그 원고, 이미지, 의료광고법 검증, AI 검색 노출 확인을 한 서비스에서",
         longDesc:
@@ -310,7 +315,7 @@ const phases: Phase[] = [
         name: "병원 AEO·GEO 진단 · GAMEX 2026",
         status: "현장 운영",
         badge: "MEDIT 부스",
-        shortDesc: "박람회 부스에서 원장님 병원이 AI 검색에 나올지 그 자리에서 진단",
+        shortDesc: "박람회 부스에서 원장님 병원이 AI 검색에 나올지 진단하고, WINAI 가입으로 이었습니다",
         longDesc:
           "GAMEX 2026 MEDIT 부스에서 쓴 진단 도구입니다.\n홈페이지 주소나 병원 이름만 넣으면 약 1분 뒤,\nChatGPT·Gemini가 그 병원을 읽고 추천할 수 있는 상태인지 알려 줍니다.\n진단 기준은 프린스턴대 GEO 연구, OpenAI·Google 공식 문서, 의료법 제56조에서 가져왔습니다.",
         features: [
