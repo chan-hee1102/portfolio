@@ -1,5 +1,8 @@
-import SectionWrapper from "@/components/ui/SectionWrapper";
+"use client";
 
+import { motion, useReducedMotion } from "framer-motion";
+
+/** 실제로 운영 중인 서비스에 쓰고 있는 것만 적는다(2026-09 기준) */
 const categories = [
   {
     title: "Frontend",
@@ -7,58 +10,63 @@ const categories = [
     skills: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],
   },
   {
-    title: "Backend",
+    title: "Backend·Data",
     color: "text-blue-600 bg-blue-50",
-    skills: ["FastAPI", "Python", "PostgreSQL", "SQLite", "SQLAlchemy"],
+    skills: ["Supabase (PostgreSQL)", "FastAPI", "Python", "SQLite", "SSE · WebSocket"],
   },
   {
-    title: "AI & Data",
-    color: "text-emerald-600 bg-emerald-50",
-    skills: ["Gemini API", "Groq Llama", "YOLOv8", "LightGBM", "Pandas"],
+    title: "AEO·GEO·SEO",
+    color: "text-emerald-700 bg-emerald-50",
+    skills: ["네이버 서치어드바이저", "구글 서치콘솔", "JSON-LD 구조화 데이터", "llms.txt", "사이트맵 · IndexNow"],
+  },
+  {
+    title: "AI",
+    color: "text-rose-600 bg-rose-50",
+    skills: ["Claude Code", "Gemini API", "Groq Llama", "YOLOv8", "LightGBM"],
   },
   {
     title: "Infra",
     color: "text-orange-600 bg-orange-50",
-    skills: ["Docker", "Railway", "GitHub Actions", "Git", "Linux"],
+    skills: ["Railway", "Vercel", "Docker", "GitHub Actions", "PortOne 결제"],
   },
 ];
 
+const EASE = [0.22, 1, 0.36, 1] as const;
+
 export default function Skills() {
+  const reduce = useReducedMotion();
   return (
-    <SectionWrapper id="skills" className="py-24 px-4 bg-white">
-      <div className="max-w-5xl mx-auto">
+    <section id="skills" className="py-24 sm:py-32 px-4 bg-white">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-            기술 스택
-          </h2>
+          <p className="text-sm font-bold text-indigo-600 mb-3">기술</p>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-gray-900 tracking-[-0.03em]">지금 쓰는 도구</h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {categories.map((cat) => (
-            <div
+        <div className="mx-auto max-w-4xl border-t border-gray-200">
+          {categories.map((cat, i) => (
+            <motion.div
               key={cat.title}
-              className="rounded-2xl border border-gray-200 bg-white p-6 hover:border-indigo-200 hover:shadow-md transition-all group"
+              initial={reduce ? false : { opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ delay: i * 0.06, duration: 0.5, ease: EASE }}
+              className="grid gap-3 border-b border-gray-200 py-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:items-center sm:gap-6"
             >
-              <h3
-                className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-5 ${cat.color}`}
-              >
+              <h3 className={`inline-flex w-fit items-center rounded-full px-3 py-1 text-xs font-bold ${cat.color}`}>
                 {cat.title}
               </h3>
-              <div className="flex flex-col gap-2">
+              <ul className="flex flex-wrap gap-2">
                 {cat.skills.map((skill) => (
-                  <div
-                    key={skill}
-                    className="flex items-center gap-2.5 text-sm text-gray-700"
-                  >
-                    <span className="h-1.5 w-1.5 rounded-full bg-indigo-400 flex-shrink-0" />
+                  <li key={skill} className="rounded-lg bg-gray-50 px-3 py-1.5 text-sm text-gray-700 ring-1 ring-gray-100">
                     {skill}
-                  </div>
+                  </li>
                 ))}
-              </div>
-            </div>
+              </ul>
+            </motion.div>
           ))}
         </div>
       </div>
-    </SectionWrapper>
+    </section>
   );
 }

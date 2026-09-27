@@ -7,8 +7,68 @@ html {
 body {
   background-color: #ffffff;
   color: #111827;
+  font-family:
+    "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    system-ui, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
+    sans-serif;
   /* 한글 어절 단위 줄바꿈 — 단어 중간에서 끊기지 않도록 */
   word-break: keep-all;
   /* 영어 단어/URL이 컨테이너를 넘는 경우엔 단어 분리 허용 */
   overflow-wrap: break-word;
+}
+
+/* 섹션 앵커로 이동할 때 떠 있는 내비에 제목이 가리지 않게 */
+section[id] {
+  scroll-margin-top: 72px;
+}
+
+/* 흐르는 띠 — 근거 캡처 줄 */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 48s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* 지금 진행 중인 경력 점 */
+@keyframes ping-soft {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  80%,
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+.animate-ping-soft {
+  animation: ping-soft 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-ping-soft {
+    animation: none !important;
+  }
+}
+
+/* 문단 끝에 한 단어만 떨어지는 줄(과부 줄)을 줄인다 */
+p,
+li,
+blockquote {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3 {
+  text-wrap: balance;
 }

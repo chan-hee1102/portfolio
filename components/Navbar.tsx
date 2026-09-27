@@ -3,9 +3,11 @@
 import { useState, useEffect, useRef } from "react";
 
 const navLinks = [
-  { label: "프로필", href: "#about" },
+  { label: "소개", href: "#about" },
+  { label: "경력", href: "#experience" },
+  { label: "검색·AI 결과", href: "#proof" },
   { label: "프로젝트", href: "#projects" },
-  { label: "자기소개서", href: "#experience" },
+  { label: "연락", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -62,7 +64,7 @@ export default function Navbar() {
             className="pl-3 pr-4 text-sm font-bold tracking-tight"
             style={{ color: "#6366f1" }}
           >
-            포트폴리오
+            임찬희
           </a>
 
           {/* 구분선 */}
@@ -101,7 +103,7 @@ export default function Navbar() {
           }}
         >
           <a href="#" className="text-sm font-bold" style={{ color: "#6366f1" }}>
-            포트폴리오
+            임찬희
           </a>
 
           <button

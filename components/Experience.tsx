@@ -1,185 +1,185 @@
-import SectionWrapper from "@/components/ui/SectionWrapper";
+"use client";
 
-const experiences = [
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
+
+type Kind = "work" | "own" | "military" | "education";
+
+interface Entry {
+  kind: Kind;
+  period: string;
+  org: string;
+  orgDesc: string;
+  role: string;
+  current?: boolean;
+  /** 한 일 — 굵은 제목 한 줄 + 풀어 쓴 한 줄 */
+  items: { t: string; d?: string }[];
+}
+
+const ENTRIES: Entry[] = [
   {
-    type: "work" as const,
-    period: "2026.04 — 현재",
-    role: "AI 풀스택 개발자",
-    org: "에이드온 주식회사",
+    kind: "work",
+    period: "2026.06 — 현재",
+    org: "윈에이드",
+    orgDesc: "병원 마케팅 대행사",
+    role: "AEO·GEO·SEO, 풀스택 개발",
+    current: true,
+    items: [
+      {
+        t: "병원 마케팅 AI SaaS 「WINAI」 개발",
+        d: "블로그 원고·이미지 생성, 의료광고법 검증, AI 검색 노출 확인을 한 서비스로 묶었습니다",
+      },
+      {
+        t: "GAMEX 2026 MEDIT 부스에서 AEO·GEO 진단 운영",
+        d: "병원 이름만 넣으면 ChatGPT·Gemini가 추천할 수 있는 상태인지 1분 안에 알려 줍니다",
+      },
+      {
+        t: "치과 홈페이지 제작과 AEO·GEO·SEO 적용",
+        d: "진료시간, 위치, 진료 과목을 검색엔진과 AI가 그대로 읽어 가게 정리했습니다",
+      },
+    ],
+  },
+  {
+    kind: "work",
+    period: "2026.03 — 2026.05",
+    org: "에이드온",
     orgDesc: "AI 솔루션 스타트업",
-    description: [
-      "AI·컴퓨터 비전 기반 사내 제품과 외부 고객사 프로젝트 풀스택 개발",
-      "AI CCTV 안전 감지 시스템(YOLOv8), KB국민은행 DMS, 자사 공식 홈페이지 등",
-      "프론트엔드·백엔드·배포까지 한 사람이 끝까지 책임",
+    role: "AI 풀스택 개발자",
+    items: [
+      { t: "건설현장 AI CCTV 안전 감지 시스템", d: "YOLOv8 실시간 추론, 이벤트 확인 화면, PDF 리포트를 만들었습니다" },
+      { t: "KB국민은행 IT자산관리포털(DMS) 프로토타입", d: "60여 개 화면, 5개 메뉴 그룹" },
+      { t: "회원제 AI 챗봇과 회사 공식 홈페이지" },
     ],
   },
   {
-    type: "work" as const,
-    period: "2025 — 2026",
-    role: "KOSTOCK Pro 솔로 개발·운영",
-    org: "KOSTOCK Pro",
-    orgDesc: "개인 SaaS → 코스콤 정식 계약",
-    description: [
-      "한국 주식 테마 분석 SaaS 솔로 풀스택 개발 (Next.js · Supabase · Railway)",
-      "코스콤(KOSCOM)과 정식 계약 진행 (2026년 6월 출시 예정)",
-      "24시간 실시간 데이터 처리·배포 운영, 모바일·웹 UX 직접 검증",
+    kind: "own",
+    period: "2025 — 현재",
+    org: "KOSTOCK",
+    orgDesc: "국내주식 실시간 섹터 분류 서비스",
+    role: "기획·개발·운영 1인",
+    items: [
+      { t: "코스콤 정식 시세 계약", d: "2026년 6월부터 장중 실시간 운영" },
+      { t: "거래대금 상위 종목을 35개 섹터로 실시간 분류" },
+      { t: "광고 없이 네이버 웹문서 1위", d: "Perplexity 첫 번째 출처, ChatGPT를 타고 들어온 가입자" },
     ],
   },
   {
-    type: "military" as const,
+    kind: "military",
     period: "2020 — 2022",
-    role: "군 복무",
     org: "대한민국 육군",
-    orgDesc: "병역 (만기 전역)",
-    description: [
-      "학업 중단 후 만기 전역, 복학하여 학업·프로젝트 재개",
-    ],
+    orgDesc: "병역",
+    role: "만기 전역",
+    items: [{ t: "전역 후 복학했습니다" }],
   },
   {
-    type: "education" as const,
+    kind: "education",
     period: "2019 — 2025",
-    role: "빅데이터 전공 학사 졸업",
     org: "고려대학교",
-    orgDesc: "학사 (군 복무 2020~2022 포함)",
-    description: [
-      "빅데이터 전공 — 데이터베이스·통계·머신러닝 기초",
-      "GPT 등장 이후 주식 데이터 자동화 개인 프로젝트로 개발 입문",
+    orgDesc: "빅데이터 전공 학사",
+    role: "데이터베이스·통계·머신러닝",
+    items: [
+      { t: "파이썬 전공 스터디 대표", d: "2023년 KUS-TUDY, 우수상" },
+      { t: "SQL 전공 멘토 두 학기", d: "2023·2024년 KUS-Tutoring, 장려상·우수상" },
+      { t: "데이터분석 준전문가(ADsP)", d: "2023년 9월 취득" },
     ],
   },
 ];
 
-function WorkIcon() {
-  return (
-    <svg
-      className="h-5 w-5"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-      />
-    </svg>
-  );
-}
-
-function EducationIcon() {
-  return (
-    <svg
-      className="h-5 w-5"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M12 14l9-5-9-5-9 5 9 5z"
-      />
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
-      />
-    </svg>
-  );
-}
-
-function MilitaryIcon() {
-  return (
-    <svg
-      className="h-5 w-5"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-      />
-    </svg>
-  );
-}
-
-const iconMap = {
-  work: { icon: <WorkIcon />, style: "bg-indigo-600 text-white" },
-  education: {
-    icon: <EducationIcon />,
-    style: "bg-white border-2 border-indigo-500 text-indigo-600",
-  },
-  military: {
-    icon: <MilitaryIcon />,
-    style: "bg-white border-2 border-gray-400 text-gray-500",
-  },
+const KIND_LABEL: Record<Kind, string> = {
+  work: "회사",
+  own: "직접 운영",
+  military: "병역",
+  education: "학력",
 };
 
+const EASE = [0.22, 1, 0.36, 1] as const;
+
 export default function Experience() {
+  const listRef = useRef<HTMLOListElement>(null);
+  const reduce = useReducedMotion();
+  // 스크롤을 내리면 세로선이 위에서부터 채워진다
+  const { scrollYProgress } = useScroll({ target: listRef, offset: ["start 75%", "end 55%"] });
+  const fill = useSpring(scrollYProgress, { stiffness: 120, damping: 26, mass: 0.4 });
+
   return (
-    <SectionWrapper id="experience" className="py-24 px-4 bg-slate-50">
+    <section id="experience" className="py-24 sm:py-32 px-4 bg-slate-50">
       <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-14">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-            경력 & 교육
+        <div className="text-center mb-14 sm:mb-16">
+          <p className="text-sm font-bold text-indigo-600 mb-3">경력</p>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-gray-900 tracking-[-0.03em] leading-tight">
+            지금까지 일한 곳
           </h2>
         </div>
 
-        <div className="relative">
-          <div className="absolute left-6 top-0 bottom-0 w-px bg-gray-200 hidden sm:block" />
+        <ol ref={listRef} className="relative">
+          {/* 세로선 — 회색 바탕 위로 인디고가 차오른다 */}
+          <span aria-hidden className="absolute left-[11px] sm:left-[15px] top-2 bottom-2 w-px bg-gray-200" />
+          <motion.span
+            aria-hidden
+            style={{ scaleY: reduce ? 1 : fill }}
+            className="absolute left-[11px] sm:left-[15px] top-2 bottom-2 w-[2px] -translate-x-[0.5px] origin-top bg-indigo-500"
+          />
 
-          <div className="space-y-8">
-            {experiences.map((exp, i) => (
-              <div key={i} className="flex gap-6">
-                <div className="relative hidden sm:flex items-start justify-center flex-shrink-0 w-12 pt-1">
-                  <div
-                    className={`w-12 h-12 rounded-full flex items-center justify-center z-10 ${iconMap[exp.type].style}`}
+          {ENTRIES.map((e, i) => (
+            <motion.li
+              key={e.org}
+              initial={reduce ? false : { opacity: 0, x: 18 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-12% 0px" }}
+              transition={{ duration: 0.6, ease: EASE, delay: 0.04 * i }}
+              className="relative pl-10 sm:pl-14 pb-8 last:pb-0"
+            >
+              {/* 점 — 지금 다니는 곳만 숨을 쉰다 */}
+              <span className="absolute left-0 top-6 sm:top-7 inline-flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center">
+                {e.current && (
+                  <span className="animate-ping-soft absolute inset-1 rounded-full bg-emerald-400" aria-hidden />
+                )}
+                <span
+                  className={`relative inline-block rounded-full ring-4 ring-slate-50 ${
+                    e.current
+                      ? "h-3.5 w-3.5 bg-emerald-500"
+                      : e.kind === "work" || e.kind === "own"
+                        ? "h-3 w-3 bg-indigo-500"
+                        : "h-3 w-3 bg-white border-2 border-gray-300"
+                  }`}
+                />
+              </span>
+
+              <div className="rounded-2xl border border-gray-200 bg-white p-5 sm:p-7 shadow-[0_1px_2px_rgba(15,23,42,0.04)]">
+                <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+                  <div className="min-w-0">
+                    <p className="flex flex-wrap items-center gap-2">
+                      <span className="text-xl sm:text-2xl font-extrabold text-gray-900 tracking-[-0.02em]">{e.org}</span>
+                      <span className="text-sm text-gray-500">{e.orgDesc}</span>
+                    </p>
+                    <p className="mt-1 text-sm font-semibold text-indigo-600">{e.role}</p>
+                  </div>
+                  <span
+                    className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-semibold ${
+                      e.current ? "bg-emerald-50 text-emerald-700" : "bg-gray-100 text-gray-500"
+                    }`}
                   >
-                    {iconMap[exp.type].icon}
-                  </div>
+                    <span className="text-gray-400">{KIND_LABEL[e.kind]}</span>
+                    {e.period}
+                  </span>
                 </div>
 
-                <div className="flex-1 bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
-                  <div className="flex flex-wrap items-start justify-between gap-2 mb-4">
-                    <div>
-                      <h3 className="text-lg font-bold text-gray-900">
-                        {exp.role}
-                      </h3>
-                      <p className="text-sm font-semibold text-indigo-600 mt-0.5">
-                        {exp.org}
-                        <span className="text-gray-400 font-normal ml-2">
-                          {exp.orgDesc}
-                        </span>
-                      </p>
-                    </div>
-                    <span className="text-xs font-semibold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-full whitespace-nowrap">
-                      {exp.period}
-                    </span>
-                  </div>
-                  <ul className="space-y-2">
-                    {exp.description.map((d, j) => (
-                      <li
-                        key={j}
-                        className="flex items-start gap-2.5 text-sm text-gray-600"
-                      >
-                        <span className="text-indigo-400 font-bold mt-0.5 flex-shrink-0">
-                          ·
-                        </span>
-                        {d}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <ul className="mt-5 space-y-3">
+                  {e.items.map((it) => (
+                    <li key={it.t} className="flex gap-3">
+                      <span aria-hidden className="mt-[9px] h-1 w-1 flex-shrink-0 rounded-full bg-indigo-400" />
+                      <span className="min-w-0">
+                        <span className="block text-[15px] font-semibold text-gray-800 leading-snug">{it.t}</span>
+                        {it.d && <span className="mt-0.5 block text-sm text-gray-500 leading-relaxed">{it.d}</span>}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            ))}
-          </div>
-        </div>
+            </motion.li>
+          ))}
+        </ol>
       </div>
-    </SectionWrapper>
+    </section>
   );
 }
